@@ -136,10 +136,59 @@
     .footer-phone a { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; color: rgba(255,255,255,0.7); text-decoration: none; letter-spacing: 0.05em; }
     .footer-phone a:hover { color: var(--gold); }
 
-    /* WHATSAPP */
-    .whatsapp-float { position: fixed; bottom: 24px; right: 24px; z-index: 999; width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: transform 0.2s, box-shadow 0.2s; }
-    .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.55); }
-    .whatsapp-float svg { width: 30px; height: 30px; fill: white; }
+    /* WHY US */
+    #why { padding: 100px 5vw; background: var(--black); }
+    .why-inner { max-width: 1200px; margin: 0 auto; }
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2px; margin-top: 52px; }
+    .why-card { background: var(--black-card); padding: 36px 28px; border-left: 3px solid transparent; transition: border-color 0.3s, background 0.3s; }
+    .why-card:hover { border-color: var(--gold); background: #1f1f1f; }
+    .why-num { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: rgba(245,168,0,0.15); line-height: 1; margin-bottom: 12px; }
+    .why-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; color: var(--gold); margin-bottom: 10px; letter-spacing: 0.03em; }
+    .why-text { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.7; }
+
+    /* PRICING */
+    #pricing { padding: 100px 5vw; background: var(--black-soft); }
+    .pricing-inner { max-width: 1200px; margin: 0 auto; }
+    .pricing-intro { max-width: 680px; margin-bottom: 52px; }
+    .pricing-intro p { margin-top: 16px; font-size: 0.95rem; color: rgba(255,255,255,0.5); line-height: 1.75; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2px; margin-bottom: 56px; }
+    .pricing-card { background: var(--black-card); padding: 32px; }
+    .pricing-card-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--gold); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid rgba(245,168,0,0.15); }
+    .pricing-row { display: flex; justify-content: space-between; align-items: baseline; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.04); gap: 16px; }
+    .pricing-row:last-child { border-bottom: none; }
+    .pricing-service { font-size: 0.88rem; color: rgba(255,255,255,0.7); line-height: 1.4; }
+    .pricing-price { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; color: var(--white); white-space: nowrap; }
+    .pricing-note-box { background: rgba(245,168,0,0.06); border: 1px solid rgba(245,168,0,0.2); padding: 28px 32px; max-width: 860px; }
+    .pricing-note-box h4 { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; color: var(--gold); margin-bottom: 10px; letter-spacing: 0.05em; }
+    .pricing-note-box p { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.8; }
+
+    /* CONNECT */
+    #connect { padding: 80px 5vw; background: var(--black); }
+    .connect-inner { max-width: 900px; margin: 0 auto; }
+    .connect-header { margin-bottom: 44px; }
+    .connect-header p { margin-top: 14px; font-size: 0.95rem; color: rgba(255,255,255,0.45); }
+    .connect-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 2px; }
+    .connect-card { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 32px 20px; text-decoration: none; color: var(--white); border: 1px solid rgba(255,255,255,0.06); transition: all 0.25s; text-align: center; }
+    .connect-card:hover { border-color: var(--gold); background: rgba(245,168,0,0.05); transform: translateY(-3px); }
+    .connect-icon { font-size: 1.8rem; }
+    .connect-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    .connect-handle { font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+    .connect-card.instagram:hover { border-color: #e1306c; background: rgba(225,48,108,0.06); }
+    .connect-card.phone:hover { border-color: var(--gold); }
+    .connect-card.email:hover { border-color: #4285F4; background: rgba(66,133,244,0.06); }
+
+    /* CAREERS */
+    #careers { padding: 100px 5vw; background: var(--black-soft); }
+    .careers-inner { max-width: 860px; margin: 0 auto; }
+    .careers-header { margin-bottom: 48px; }
+    .careers-header .section-title em { color: var(--gold); font-style: normal; }
+    .careers-header p { margin-top: 14px; font-size: 0.95rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    form.careers-form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .careers-section-divider { grid-column: 1 / -1; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.7rem; letter-spacing: 0.35em; text-transform: uppercase; color: rgba(245,168,0,0.6); padding-top: 8px; border-top: 1px solid rgba(245,168,0,0.12); margin-top: 8px; }
+    .checkbox-group { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+    .checkbox-item { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+    .checkbox-item input[type=checkbox] { accent-color: var(--gold); width: 16px; height: 16px; cursor: pointer; }
+    .checkbox-item span { font-size: 0.88rem; color: rgba(255,255,255,0.7); }
 
     /* ANIMATIONS */
     @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
@@ -161,9 +210,9 @@
   <a href="#hero" class="nav-logo">
     <!--
       LOGO: Replace src with your Cloudinary URL after uploading
-      Example: src="https://res.cloudinary.com/dpoxihyvz/image/upload/v1776282944/2024-02-09_21-59-07_zibkqc.jpg"
+      Example: src="https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/v.../logo.png"
     -->
-    <img src="https://res.cloudinary.com/dpoxihyvz/image/upload/v1776282944/2024-02-09_21-59-07_zibkqc.jpg" alt="I AM HANDYMAN" onerror="this.style.display='none'">
+    <img src="https://res.cloudinary.com/dpoxihyvz/image/upload/q_auto/f_auto/v1776282944/2024-02-09_21-59-07_zibkqc.jpg" alt="I AM HANDYMAN" onerror="this.style.display='none'">
     <div class="nav-logo-text">
       I AM HANDYMAN
       <span>Los Angeles, CA</span>
@@ -171,9 +220,10 @@
   </a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
+    <li><a href="#pricing">Pricing</a></li>
     <li><a href="#estimate">Free Estimate</a></li>
+    <li><a href="#careers">Careers</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#instagram">Instagram</a></li>
   </ul>
   <a href="#estimate" class="nav-cta">Free Estimate</a>
 </nav>
@@ -187,7 +237,7 @@
       LOGO IMAGE: Replace src with Cloudinary URL
     -->
     <img class="hero-logo"
-         src="REPLACE_WITH_CLOUDINARY_LOGO_URL"
+         src="https://res.cloudinary.com/dpoxihyvz/image/upload/q_auto/f_auto/v1776282944/2024-02-09_21-59-07_zibkqc.jpg"
          alt="I AM HANDYMAN"
          onerror="this.style.display='none'">
 
@@ -286,6 +336,129 @@
   </div>
 </section>
 
+<!-- WHY CHOOSE US -->
+<section id="why">
+  <div class="why-inner">
+    <p class="section-label">The Difference</p>
+    <h2 class="section-title">Why Choose Us</h2>
+    <div class="gold-bar"></div>
+    <div class="why-grid">
+
+      <div class="why-card">
+        <div class="why-num">01</div>
+        <div class="why-title">Quality You Can Trust</div>
+        <div class="why-text">Every job is done with professional-grade tools and years of hands-on experience. We don't cut corners — your home deserves the best.</div>
+      </div>
+
+      <div class="why-card">
+        <div class="why-num">02</div>
+        <div class="why-title">On Time, Every Time</div>
+        <div class="why-text">We show up when we say we will, finish what we started, and leave your space clean. Your time is valuable — we respect that.</div>
+      </div>
+
+      <div class="why-card">
+        <div class="why-num">03</div>
+        <div class="why-title">Fair & Transparent Pricing</div>
+        <div class="why-text">No surprise charges. We estimate upfront, you know what you're paying before we start. If something unexpected comes up — we talk first.</div>
+      </div>
+
+      <div class="why-card">
+        <div class="why-num">04</div>
+        <div class="why-title">Long-Term Relationship</div>
+        <div class="why-text">Our goal isn't a one-time job. We want to be your go-to handyman for years — the person you call whenever something breaks.</div>
+      </div>
+
+      <div class="why-card">
+        <div class="why-num">05</div>
+        <div class="why-title">Individual Approach</div>
+        <div class="why-text">We listen to what you actually want, not what we think you need. Every home is different, every client is different — we adapt.</div>
+      </div>
+
+      <div class="why-card">
+        <div class="why-num">06</div>
+        <div class="why-title">Your Peace of Mind</div>
+        <div class="why-text">When we leave, the problem is solved. No callbacks, no re-dos, no headaches. That's the standard we hold ourselves to — every single time.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="pricing-inner">
+    <div class="pricing-intro">
+      <p class="section-label">Transparent Pricing</p>
+      <h2 class="section-title">How We Charge</h2>
+      <div class="gold-bar"></div>
+      <p>
+        We price based on a <strong style="color:var(--white)">$60/hr labor rate</strong>, calculated from our experience to give you a fair flat rate upfront.
+        Minimum charge is <strong style="color:var(--white)">$120</strong> (covers the first 2 hours).
+        If a job can't be estimated in advance, we work hourly — $120 for the first 2 hours, $60/hr after that.
+      </p>
+    </div>
+
+    <div class="pricing-grid">
+
+      <div class="pricing-card">
+        <div class="pricing-card-title">🔧 Plumbing</div>
+        <div class="pricing-row"><span class="pricing-service">Faucet / Mixer Replacement</span><span class="pricing-price">from $180</span></div>
+        <div class="pricing-row"><span class="pricing-service">Toilet Replacement</span><span class="pricing-price">from $180</span></div>
+        <div class="pricing-row"><span class="pricing-service">Other plumbing work</span><span class="pricing-price">from $120</span></div>
+      </div>
+
+      <div class="pricing-card">
+        <div class="pricing-card-title">⚡ Electrical</div>
+        <div class="pricing-row"><span class="pricing-service">Bathroom Fan (exhaust) Replacement</span><span class="pricing-price">from $240</span></div>
+        <div class="pricing-row"><span class="pricing-service">Chandelier / Light Fixture</span><span class="pricing-price">from $180</span></div>
+        <div class="pricing-row"><span class="pricing-service">Other electrical work</span><span class="pricing-price">from $120</span></div>
+      </div>
+
+      <div class="pricing-card">
+        <div class="pricing-card-title">📺 TV Mounting</div>
+        <div class="pricing-row"><span class="pricing-service">TV under 60"</span><span class="pricing-price">from $180</span></div>
+        <div class="pricing-row"><span class="pricing-service">TV 60" and larger</span><span class="pricing-price">from $240</span></div>
+      </div>
+
+      <div class="pricing-card">
+        <div class="pricing-card-title">🍳 Appliance Installation</div>
+        <div class="pricing-row"><span class="pricing-service">Oven / Range Installation</span><span class="pricing-price">from $180</span></div>
+        <div class="pricing-row"><span class="pricing-service">Cooktop Installation</span><span class="pricing-price">from $180</span></div>
+        <div class="pricing-row"><span class="pricing-service">Dishwasher Installation</span><span class="pricing-price">from $240</span></div>
+        <div class="pricing-row"><span class="pricing-service">Microwave Installation</span><span class="pricing-price">from $120</span></div>
+        <div class="pricing-row"><span class="pricing-service">Range Hood / Vent Installation</span><span class="pricing-price">from $140</span></div>
+      </div>
+
+      <div class="pricing-card">
+        <div class="pricing-card-title">🪑 Assembly & Other</div>
+        <div class="pricing-row"><span class="pricing-service">IKEA / Flat-pack Furniture</span><span class="pricing-price">from $150</span></div>
+        <div class="pricing-row"><span class="pricing-service">Painting, Drywall, Carpentry</span><span class="pricing-price">by estimate</span></div>
+        <div class="pricing-row"><span class="pricing-service">Any other work</span><span class="pricing-price">from $120</span></div>
+      </div>
+
+      <div class="pricing-card">
+        <div class="pricing-card-title">💰 Hourly Rate</div>
+        <div class="pricing-row"><span class="pricing-service">Service Call + First 2 hours</span><span class="pricing-price">$120</span></div>
+        <div class="pricing-row"><span class="pricing-service">Each additional hour</span><span class="pricing-price">$60 / hr</span></div>
+        <div class="pricing-row"><span class="pricing-service">Minimum charge</span><span class="pricing-price">$120</span></div>
+      </div>
+
+    </div>
+
+    <div class="pricing-note-box">
+      <h4>📌 How Our Pricing Works</h4>
+      <p>
+        All prices assume standard conditions — replacing old with new, no custom modifications or cabinetry work required.
+        We calculate a flat rate based on $60/hr, using our experience to estimate the job.
+        Thanks to professional tools and expertise, we often finish faster than planned — but the price stays the same.
+        If something unexpected comes up and takes longer, we <strong style="color:var(--white)">don't charge extra</strong>.
+        You pay for skill and speed, not the clock.
+        For larger or complex projects, we provide a <a href="#estimate" style="color:var(--gold)">free estimate</a>.
+      </p>
+    </div>
+  </div>
+</section>
+
 <!-- FREE ESTIMATE FORM -->
 <section id="estimate">
   <div class="estimate-inner">
@@ -361,16 +534,47 @@
   </div>
 </section>
 
-<!-- INSTAGRAM -->
-<section id="instagram">
-  <div class="instagram-inner">
-    <p class="section-label">Follow Our Work</p>
-    <div class="instagram-handle">See Our Latest Jobs<br><span>On Instagram</span></div>
-    <p style="color:rgba(255,255,255,0.45); font-size:0.9rem; margin-top:6px;">Real photos from real jobs across Los Angeles.</p>
-    <a href="https://www.instagram.com/1_am_handyman/" target="_blank" rel="noopener noreferrer" class="instagram-link">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-      @1_am_handyman
-    </a>
+<!-- CONNECT WITH US -->
+<section id="connect">
+  <div class="connect-inner">
+    <div class="connect-header">
+      <p class="section-label">Stay In Touch</p>
+      <h2 class="section-title">Connect With Us</h2>
+      <div class="gold-bar"></div>
+      <p>Reach out the way that works best for you — we're available on all major platforms.</p>
+    </div>
+    <div class="connect-grid">
+
+      <a href="https://www.instagram.com/1_am_handyman/" target="_blank" rel="noopener" class="connect-card instagram">
+        <div class="connect-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </div>
+        <div class="connect-name">Instagram</div>
+        <div class="connect-handle">@1_am_handyman</div>
+      </a>
+
+      <a href="tel:3234543637" class="connect-card phone">
+        <div class="connect-icon">📞</div>
+        <div class="connect-name">Call / SMS</div>
+        <div class="connect-handle">323-454-3637</div>
+      </a>
+
+      <a href="mailto:1am.handyman.sf@gmail.com" class="connect-card email">
+        <div class="connect-icon">✉️</div>
+        <div class="connect-name">Email</div>
+        <div class="connect-handle">1am.handyman.sf@gmail.com</div>
+      </a>
+
+      <!--
+        ДОБАВИТЬ НОВУЮ СОЦСЕТЬ — скопируй блок ниже и вставь:
+        <a href="ССЫЛКА" target="_blank" rel="noopener" class="connect-card">
+          <div class="connect-icon">ИКОНКА</div>
+          <div class="connect-name">НАЗВАНИЕ</div>
+          <div class="connect-handle">@ХЭНДЛ</div>
+        </a>
+      -->
+
+    </div>
   </div>
 </section>
 
@@ -416,7 +620,6 @@
 
       <div class="social-links">
         <a href="https://www.instagram.com/1_am_handyman/" target="_blank" rel="noopener" class="social-btn">📸 Instagram</a>
-        <a href="https://wa.me/13234543637" target="_blank" rel="noopener" class="social-btn">💬 WhatsApp</a>
       </div>
     </div>
 
@@ -431,6 +634,118 @@
   </div>
 </section>
 
+<!-- CAREERS -->
+<section id="careers">
+  <div class="careers-inner">
+    <div class="careers-header">
+      <p class="section-label">Join The Team</p>
+      <h2 class="section-title"><em>Careers</em></h2>
+      <div class="gold-bar"></div>
+      <p>Looking to grow with a professional team? Fill out the form below and we'll be in touch. We're always open to talented, motivated people.</p>
+    </div>
+
+    <!--
+      Используй отдельную Formspree форму для Careers
+      1. Зайди на formspree.io → Create new form → назови "Careers"
+      2. Замени YOUR_CAREERS_FORM_ID ниже
+    -->
+    <form class="careers-form estimate-form"
+          action="https://formspree.io/f/YOUR_CAREERS_FORM_ID"
+          method="POST"
+          id="careersForm">
+
+      <div class="careers-section-divider">Personal Info</div>
+
+      <div class="form-group">
+        <label for="c_name">First & Last Name *</label>
+        <input type="text" id="c_name" name="name" placeholder="Alex Johnson" required>
+      </div>
+
+      <div class="form-group">
+        <label for="c_phone">Phone Number *</label>
+        <input type="tel" id="c_phone" name="phone" placeholder="(xxx) xxx-xxxx" required>
+      </div>
+
+      <div class="form-group">
+        <label for="c_email">Email Address *</label>
+        <input type="email" id="c_email" name="email" placeholder="alex@email.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="c_position">Position Interested In *</label>
+        <select id="c_position" name="position" required>
+          <option value="" disabled selected>Select a role...</option>
+          <option>Technician / Handyman</option>
+          <option>Estimator</option>
+          <option>Sales</option>
+          <option>Marketing</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="careers-section-divider">Languages You Speak</div>
+
+      <div class="checkbox-group">
+        <label class="checkbox-item"><input type="checkbox" name="lang_english" value="English"><span>English</span></label>
+        <label class="checkbox-item"><input type="checkbox" name="lang_russian" value="Russian"><span>Russian</span></label>
+        <label class="checkbox-item"><input type="checkbox" name="lang_spanish" value="Spanish"><span>Spanish</span></label>
+        <label class="checkbox-item"><input type="checkbox" name="lang_armenian" value="Armenian"><span>Armenian</span></label>
+      </div>
+
+      <div class="careers-section-divider">Experience</div>
+
+      <div class="form-group">
+        <label for="c_experience">What Can You Do & How Long Have You Done It? *</label>
+        <textarea id="c_experience" name="experience"
+          placeholder="Example: I've been doing electrical work for 5 years, plumbing for 3 years..." required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="c_rate">Expected Hourly Rate *</label>
+        <input type="text" id="c_rate" name="expected_rate" placeholder="e.g. $25/hr" required>
+      </div>
+
+      <div class="form-group">
+        <label for="c_area">Preferred Work Area / Neighborhood</label>
+        <input type="text" id="c_area" name="work_area" placeholder="e.g. Simi Valley, Thousand Oaks...">
+      </div>
+
+      <div class="form-group">
+        <label for="c_specialty">Favorite Type of Work <span style="color:rgba(255,255,255,0.3);font-weight:400;">(Technicians)</span></label>
+        <select id="c_specialty" name="specialty">
+          <option value="" selected>— not applicable / no preference —</option>
+          <option>Electrical</option>
+          <option>Plumbing</option>
+          <option>Painting</option>
+          <option>Carpentry</option>
+          <option>Furniture Assembly</option>
+          <option>General Repairs</option>
+          <option>Multiple / All</option>
+        </select>
+      </div>
+
+      <div class="form-group full">
+        <label for="c_about">A Little About Yourself <span style="color:rgba(255,255,255,0.3);font-weight:400;">(optional)</span></label>
+        <textarea id="c_about" name="about"
+          placeholder="Tell us anything else you'd like us to know..."></textarea>
+      </div>
+
+      <div class="form-submit">
+        <button type="submit">Submit Application →</button>
+      </div>
+
+      <p class="form-note">
+        We review every application and will contact you if there's a match. Thank you for your interest!
+      </p>
+    </form>
+
+    <div class="form-success" id="careersSuccess">
+      <h3>✓ Application Received!</h3>
+      <p>Thank you! We'll review your application and reach out if there's a good fit.</p>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-brand">I AM HANDYMAN</div>
@@ -438,10 +753,7 @@
   <div class="footer-phone"><a href="tel:3234543637">323-454-3637</a></div>
 </footer>
 
-<!-- WHATSAPP FLOAT -->
-<a href="https://wa.me/13234543637" target="_blank" rel="noopener" class="whatsapp-float" title="Chat on WhatsApp">
-  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
+
 
 <script>
   // ═══════════════════════════════════════════════════════
@@ -505,11 +817,38 @@
     });
   }
 
+  // Careers form
+  const careersForm = document.getElementById('careersForm');
+  const careersSuccess = document.getElementById('careersSuccess');
+  if (careersForm) {
+    careersForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = careersForm.querySelector('button[type=submit]');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      try {
+        const res = await fetch(careersForm.action, { method: 'POST', body: new FormData(careersForm), headers: { 'Accept': 'application/json' } });
+        if (res.ok) {
+          careersForm.style.display = 'none';
+          careersSuccess.style.display = 'block';
+        } else {
+          alert('Something went wrong. Please email us: 1am.handyman.sf@gmail.com');
+          btn.textContent = 'Submit Application →';
+          btn.disabled = false;
+        }
+      } catch {
+        alert('Connection error. Please email: 1am.handyman.sf@gmail.com');
+        btn.textContent = 'Submit Application →';
+        btn.disabled = false;
+      }
+    });
+  }
+
   // Scroll reveal
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; } });
   }, { threshold: 0.08 });
-  document.querySelectorAll('.service-card, .contact-item, .contact-aside').forEach(el => {
+  document.querySelectorAll('.service-card, .contact-item, .contact-aside, .why-card, .pricing-card, .connect-card').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
