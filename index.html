@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>I AM HANDYMAN – Los Angeles</title>
+  <meta name="description" content="Professional handyman services in Los Angeles. Plumbing, Electrical, Painting, Carpentry, Furniture Assembly and more. Call 323-454-3637.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600;700&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #F5A800;
+      --gold-dark: #D48F00;
+      --black: #0A0A0A;
+      --black-soft: #141414;
+      --black-card: #1A1A1A;
+      --white: #FFFFFF;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--white); font-family: 'Barlow', sans-serif; overflow-x: hidden; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw; height: 64px;
+      background: rgba(10,10,10,0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(245,168,0,0.15);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo img { height: 44px; width: auto; }
+    .nav-logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; color: var(--gold); letter-spacing: 0.05em; line-height: 1; }
+    .nav-logo-text span { display: block; font-size: 0.65rem; color: rgba(255,255,255,0.5); font-family: 'Barlow', sans-serif; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta { background: var(--gold); color: var(--black) !important; padding: 9px 22px; font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 0.85rem; letter-spacing: 0.1em; text-decoration: none; text-transform: uppercase; clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%); transition: background 0.2s; }
+    .nav-cta:hover { background: var(--gold-dark); }
+
+    /* HERO */
+    #hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; padding: 100px 5vw 80px; text-align: center; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 55% at 50% 40%, rgba(245,168,0,0.07) 0%, transparent 70%), linear-gradient(180deg, #0A0A0A 0%, #111 100%); }
+    .hero-stripe { position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0.4; }
+    .hero-content { position: relative; z-index: 2; }
+    .hero-logo { width: min(280px, 52vw); margin: 0 auto 28px; animation: fadeUp 0.8s ease both; }
+    .hero-tagline { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: clamp(0.7rem, 1.5vw, 0.85rem); letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; animation: fadeUp 0.8s 0.15s ease both; }
+    .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.2rem, 10vw, 6.5rem); line-height: 0.92; color: var(--white); animation: fadeUp 0.8s 0.25s ease both; }
+    .hero-title em { color: var(--gold); font-style: normal; display: block; }
+    .hero-sub { font-size: clamp(0.9rem, 2vw, 1rem); color: rgba(255,255,255,0.55); margin: 18px auto 36px; max-width: 440px; line-height: 1.65; animation: fadeUp 0.8s 0.35s ease both; }
+    .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; animation: fadeUp 0.8s 0.45s ease both; }
+    .btn-primary { display: inline-block; background: var(--gold); color: var(--black); font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 1rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; padding: 14px 36px; clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%); transition: background 0.2s, transform 0.15s; }
+    .btn-primary:hover { background: var(--gold-dark); transform: translateY(-2px); }
+    .btn-outline { display: inline-block; border: 2px solid var(--gold); color: var(--gold); font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 1rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; padding: 12px 34px; clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%); transition: all 0.2s; }
+    .btn-outline:hover { background: var(--gold); color: var(--black); transform: translateY(-2px); }
+    .hero-phone { margin-top: 40px; font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.8rem, 5vw, 2.8rem); letter-spacing: 0.05em; color: var(--gold); animation: fadeUp 0.8s 0.55s ease both; }
+    .hero-phone a { color: inherit; text-decoration: none; }
+    .hero-phone a:hover { text-decoration: underline; }
+
+    /* SECTION COMMON */
+    section { position: relative; z-index: 1; }
+    .section-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.4rem, 6vw, 3.8rem); line-height: 1; color: var(--white); }
+    .gold-bar { width: 48px; height: 3px; background: var(--gold); margin: 16px 0 0; }
+
+    /* SERVICES */
+    #services { padding: 100px 5vw; background: var(--black-soft); }
+    .services-header { max-width: 1200px; margin: 0 auto 52px; }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2px; max-width: 1200px; margin: 0 auto; }
+    .service-card { position: relative; aspect-ratio: 4/3; overflow: hidden; cursor: pointer; background: var(--black-card); }
+    .service-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease, filter 0.4s; filter: brightness(0.5) saturate(0.7); }
+    .service-card:hover img { transform: scale(1.07); filter: brightness(0.3); }
+    .img-placeholder { width: 100%; height: 100%; background: var(--black-card); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: rgba(245,168,0,0.12); transition: background 0.4s; }
+    .service-card:hover .img-placeholder { background: #111; }
+    .service-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, transparent 55%); display: flex; flex-direction: column; justify-content: flex-end; padding: 22px; transition: background 0.4s; }
+    .service-card:hover .service-overlay { background: linear-gradient(to top, rgba(0,0,0,0.96) 0%, rgba(0,0,0,0.4) 100%); }
+    .service-icon { font-size: 1.4rem; margin-bottom: 4px; }
+    .service-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.55rem; color: var(--gold); line-height: 1; }
+    .service-desc { font-size: 0.8rem; color: rgba(255,255,255,0.65); margin-top: 5px; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, opacity 0.3s; opacity: 0; line-height: 1.5; }
+    .service-card:hover .service-desc { max-height: 60px; opacity: 1; }
+
+    /* ESTIMATE */
+    #estimate { padding: 100px 5vw; background: var(--black); overflow: hidden; }
+    .estimate-inner { max-width: 780px; margin: 0 auto; }
+    .estimate-header { margin-bottom: 48px; }
+    .estimate-header .section-title em { color: var(--gold); font-style: normal; }
+    .estimate-header p { margin-top: 16px; font-size: 1rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    form.estimate-form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+    .form-group input, .form-group select, .form-group textarea { background: var(--black-card); border: 1px solid rgba(245,168,0,0.2); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 0.95rem; padding: 13px 16px; outline: none; transition: border-color 0.25s, background 0.25s; width: 100%; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); background: #1f1f1f; }
+    .form-group select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23F5A800' stroke-width='2' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; cursor: pointer; background-color: var(--black-card); }
+    .form-group select option { background: var(--black-card); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-submit { grid-column: 1 / -1; margin-top: 8px; }
+    .form-submit button { width: 100%; background: var(--gold); color: var(--black); border: none; font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.12em; padding: 18px; cursor: pointer; clip-path: polygon(16px 0%, 100% 0%, calc(100% - 16px) 100%, 0% 100%); transition: background 0.2s, transform 0.15s; }
+    .form-submit button:hover { background: var(--gold-dark); transform: translateY(-2px); }
+    .form-note { grid-column: 1 / -1; font-size: 0.72rem; color: rgba(255,255,255,0.3); text-align: center; margin-top: 4px; }
+    .form-success { display: none; text-align: center; padding: 48px 32px; background: rgba(245,168,0,0.06); border: 1px solid rgba(245,168,0,0.25); }
+    .form-success h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--gold); margin-bottom: 10px; }
+    .form-success p { color: rgba(255,255,255,0.55); }
+
+    /* INSTAGRAM */
+    #instagram { padding: 80px 5vw; background: var(--black-soft); text-align: center; }
+    .instagram-inner { max-width: 560px; margin: 0 auto; }
+    .instagram-handle { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 6vw, 3.2rem); color: var(--white); margin: 14px 0 8px; }
+    .instagram-handle span { color: var(--gold); }
+    .instagram-link { display: inline-flex; align-items: center; gap: 12px; background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: #fff; text-decoration: none; font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 1rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 36px; clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%); margin-top: 20px; transition: opacity 0.2s, transform 0.15s; }
+    .instagram-link:hover { opacity: 0.85; transform: translateY(-2px); }
+
+    /* CONTACT */
+    #contact { padding: 100px 5vw; background: var(--black); }
+    .contact-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .contact-item { display: flex; gap: 18px; align-items: flex-start; margin-top: 32px; }
+    .contact-icon { width: 44px; height: 44px; background: rgba(245,168,0,0.08); border: 1px solid rgba(245,168,0,0.25); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+    .contact-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .contact-value { font-size: 1rem; font-weight: 600; color: var(--white); }
+    .contact-value a { color: inherit; text-decoration: none; transition: color 0.2s; }
+    .contact-value a:hover { color: var(--gold); }
+    .social-links { display: flex; gap: 12px; margin-top: 36px; flex-wrap: wrap; }
+    .social-btn { display: flex; align-items: center; gap: 8px; padding: 10px 18px; border: 1px solid rgba(245,168,0,0.3); color: var(--white); text-decoration: none; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.2s; }
+    .social-btn:hover { border-color: var(--gold); background: rgba(245,168,0,0.08); color: var(--gold); }
+    .contact-aside { background: var(--black-card); border: 1px solid rgba(245,168,0,0.08); padding: 36px; }
+    .area-label { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--gold); margin-bottom: 12px; }
+    .area-note { font-size: 0.88rem; color: rgba(255,255,255,0.45); line-height: 1.65; margin-bottom: 20px; }
+    .area-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .area-tag { background: rgba(245,168,0,0.06); border: 1px solid rgba(245,168,0,0.18); color: rgba(255,255,255,0.65); font-size: 0.72rem; letter-spacing: 0.08em; padding: 5px 12px; font-family: 'Barlow', sans-serif; font-weight: 600; }
+
+    /* FOOTER */
+    footer { background: #050505; padding: 28px 5vw; border-top: 1px solid rgba(245,168,0,0.1); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+    .footer-brand { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; color: var(--gold); letter-spacing: 0.05em; }
+    .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.25); }
+    .footer-phone a { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; color: rgba(255,255,255,0.7); text-decoration: none; letter-spacing: 0.05em; }
+    .footer-phone a:hover { color: var(--gold); }
+
+    /* WHATSAPP */
+    .whatsapp-float { position: fixed; bottom: 24px; right: 24px; z-index: 999; width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: transform 0.2s, box-shadow 0.2s; }
+    .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.55); }
+    .whatsapp-float svg { width: 30px; height: 30px; fill: white; }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      form.estimate-form { grid-template-columns: 1fr; }
+      .form-group.full, .form-submit, .form-note { grid-column: 1; }
+      .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <!--
+      LOGO: Replace src with your Cloudinary URL after uploading
+      Example: src="https://res.cloudinary.com/dpoxihyvz/image/upload/v1776282944/2024-02-09_21-59-07_zibkqc.jpg"
+    -->
+    <img src="https://res.cloudinary.com/dpoxihyvz/image/upload/v1776282944/2024-02-09_21-59-07_zibkqc.jpg" alt="I AM HANDYMAN" onerror="this.style.display='none'">
+    <div class="nav-logo-text">
+      I AM HANDYMAN
+      <span>Los Angeles, CA</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#estimate">Free Estimate</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#instagram">Instagram</a></li>
+  </ul>
+  <a href="#estimate" class="nav-cta">Free Estimate</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-stripe"></div>
+  <div class="hero-content">
+    <!--
+      LOGO IMAGE: Replace src with Cloudinary URL
+    -->
+    <img class="hero-logo"
+         src="REPLACE_WITH_CLOUDINARY_LOGO_URL"
+         alt="I AM HANDYMAN"
+         onerror="this.style.display='none'">
+
+    <p class="hero-tagline">Simi Valley · Los Angeles County · California</p>
+    <h1 class="hero-title">
+      Your Home<br>Deserves<br><em>The Best</em>
+    </h1>
+    <p class="hero-sub">
+      Professional handyman services with quality you can trust.
+      Plumbing, Electrical, Painting, Carpentry &amp; more — done right the first time.
+    </p>
+    <div class="hero-btns">
+      <a href="#estimate" class="btn-primary">Get Free Estimate</a>
+      <a href="tel:3234543637" class="btn-outline">Call Now</a>
+    </div>
+    <div class="hero-phone">
+      <a href="tel:3234543637">323-454-3637</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header">
+    <p class="section-label">What We Do</p>
+    <h2 class="section-title">Our Services</h2>
+    <div class="gold-bar"></div>
+  </div>
+  <div class="services-grid">
+
+    <!-- PLUMBING
+         HOW TO ADD PHOTO:
+         1. Upload photo to Cloudinary → copy URL
+         2. Replace <div class="img-placeholder">🔧</div>
+            with: <img src="YOUR_CLOUDINARY_URL" alt="Plumbing">
+    -->
+    <div class="service-card">
+      <div class="img-placeholder">🔧</div>
+      <div class="service-overlay">
+        <div class="service-icon">🔧</div>
+        <div class="service-name">Plumbing</div>
+        <div class="service-desc">Leak repairs, pipe installation, faucets, toilets &amp; more.</div>
+      </div>
+    </div>
+
+    <!-- ELECTRICAL -->
+    <div class="service-card">
+      <div class="img-placeholder">⚡</div>
+      <div class="service-overlay">
+        <div class="service-icon">⚡</div>
+        <div class="service-name">Electrical</div>
+        <div class="service-desc">Outlets, switches, ceiling fans, panel work &amp; lighting.</div>
+      </div>
+    </div>
+
+    <!-- PAINTING -->
+    <div class="service-card">
+      <div class="img-placeholder">🎨</div>
+      <div class="service-overlay">
+        <div class="service-icon">🎨</div>
+        <div class="service-name">Painting</div>
+        <div class="service-desc">Interior &amp; exterior painting, walls, ceilings, trim.</div>
+      </div>
+    </div>
+
+    <!-- CARPENTRY -->
+    <div class="service-card">
+      <div class="img-placeholder">🪚</div>
+      <div class="service-overlay">
+        <div class="service-icon">🪚</div>
+        <div class="service-name">Carpentry</div>
+        <div class="service-desc">Custom woodwork, shelving, doors, frames &amp; repairs.</div>
+      </div>
+    </div>
+
+    <!-- FURNITURE ASSEMBLY -->
+    <div class="service-card">
+      <div class="img-placeholder">🪑</div>
+      <div class="service-overlay">
+        <div class="service-icon">🪑</div>
+        <div class="service-name">Furniture Assembly</div>
+        <div class="service-desc">IKEA &amp; flat-pack furniture, fast &amp; clean.</div>
+      </div>
+    </div>
+
+    <!-- WALLING -->
+    <div class="service-card">
+      <div class="img-placeholder">🧱</div>
+      <div class="service-overlay">
+        <div class="service-icon">🧱</div>
+        <div class="service-name">Walling</div>
+        <div class="service-desc">Drywall, patching, tiling, backsplash &amp; wall repairs.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FREE ESTIMATE FORM -->
+<section id="estimate">
+  <div class="estimate-inner">
+    <div class="estimate-header">
+      <p class="section-label">No Obligation</p>
+      <h2 class="section-title">Get a <em>Free</em> Estimate</h2>
+      <div class="gold-bar"></div>
+      <p>Tell us what you need — we'll get back to you within 24 hours. No hidden fees, no surprises.</p>
+    </div>
+
+    <!--
+      FORMSPREE SETUP:
+      1. Go to https://formspree.io → Sign up (free)
+      2. Create new form → copy your form ID
+      3. Replace "YOUR_FORMSPREE_ID" below with the actual ID
+         Example: action="https://formspree.io/f/xpwzabc1"
+    -->
+    <form class="estimate-form"
+          action="https://formspree.io/f/YOUR_FORMSPREE_ID"
+          method="POST"
+          id="estimateForm">
+
+      <div class="form-group">
+        <label for="name">Your Name *</label>
+        <input type="text" id="name" name="name" placeholder="John Smith" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number *</label>
+        <input type="tel" id="phone" name="phone" placeholder="(xxx) xxx-xxxx" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="john@email.com">
+      </div>
+
+      <div class="form-group">
+        <label for="service">Service Needed *</label>
+        <select id="service" name="service" required>
+          <option value="" disabled selected>Select a service...</option>
+          <option>Plumbing</option>
+          <option>Electrical</option>
+          <option>Painting</option>
+          <option>Carpentry</option>
+          <option>Furniture Assembly</option>
+          <option>Walling / Drywall</option>
+          <option>Multiple Services</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-group full">
+        <label for="message">Describe Your Project *</label>
+        <textarea id="message" name="message"
+          placeholder="Please describe what needs to be done, and your address or area in Los Angeles..."
+          required></textarea>
+      </div>
+
+      <div class="form-submit">
+        <button type="submit">Request Free Estimate →</button>
+      </div>
+
+      <p class="form-note">
+        We'll contact you within 24 hours. Your info is never shared.
+      </p>
+    </form>
+
+    <div class="form-success" id="formSuccess">
+      <h3>✓ Request Sent!</h3>
+      <p>Thank you! We'll contact you within 24 hours to discuss your project.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section id="instagram">
+  <div class="instagram-inner">
+    <p class="section-label">Follow Our Work</p>
+    <div class="instagram-handle">See Our Latest Jobs<br><span>On Instagram</span></div>
+    <p style="color:rgba(255,255,255,0.45); font-size:0.9rem; margin-top:6px;">Real photos from real jobs across Los Angeles.</p>
+    <a href="https://www.instagram.com/1_am_handyman/" target="_blank" rel="noopener noreferrer" class="instagram-link">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      @1_am_handyman
+    </a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div>
+      <p class="section-label">Reach Us</p>
+      <h2 class="section-title">Contact</h2>
+      <div class="gold-bar"></div>
+
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div>
+          <div class="contact-label">Phone &amp; SMS</div>
+          <div class="contact-value"><a href="tel:3234543637">323-454-3637</a></div>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value"><a href="mailto:1am.handyman.sf@gmail.com">1am.handyman.sf@gmail.com</a></div>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-label">Based In</div>
+          <div class="contact-value">Simi Valley, CA</div>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-icon">🕐</div>
+        <div>
+          <div class="contact-label">Hours</div>
+          <div class="contact-value">Mon – Sat: 7:00 AM – 7:00 PM</div>
+        </div>
+      </div>
+
+      <div class="social-links">
+        <a href="https://www.instagram.com/1_am_handyman/" target="_blank" rel="noopener" class="social-btn">📸 Instagram</a>
+        <a href="https://wa.me/13234543637" target="_blank" rel="noopener" class="social-btn">💬 WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="contact-aside">
+      <div class="area-label">Service Area</div>
+      <p class="area-note">Based in Simi Valley — we serve a 30-mile radius. Not sure if we cover your location? Just call or text!</p>
+      <div class="area-tags" id="serviceAreaTags"></div>
+      <div style="margin-top:32px;">
+        <a href="#estimate" class="btn-primary">Book Now →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">I AM HANDYMAN</div>
+  <div class="footer-copy">© 2025 I AM Handyman. Los Angeles, CA. All rights reserved.</div>
+  <div class="footer-phone"><a href="tel:3234543637">323-454-3637</a></div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/13234543637" target="_blank" rel="noopener" class="whatsapp-float" title="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  // ═══════════════════════════════════════════════════════
+  // SERVICE AREA — просто добавляй/убирай города в этот список
+  // ═══════════════════════════════════════════════════════
+  const SERVICE_AREAS = [
+    "Simi Valley",
+    "Thousand Oaks",
+    "Moorpark",
+    "Camarillo",
+    "Oxnard",
+    "Ventura",
+    "Chatsworth",
+    "Northridge",
+    "North Hollywood",
+    "Burbank",
+    "Glendale",
+    "Pasadena",
+    "Woodland Hills",
+    "Calabasas",
+    "Santa Clarita",
+    "Newhall",
+    "Canyon Country",
+  ];
+
+  // Рендер тегов
+  const tagsContainer = document.getElementById('serviceAreaTags');
+  if (tagsContainer) {
+    SERVICE_AREAS.forEach(city => {
+      const tag = document.createElement('span');
+      tag.className = 'area-tag';
+      tag.textContent = city;
+      tagsContainer.appendChild(tag);
+    });
+  }
+
+  // Smooth form submission
+  const form = document.getElementById('estimateForm');
+  const success = document.getElementById('formSuccess');
+  if (form) {
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = form.querySelector('button[type=submit]');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      try {
+        const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+        if (res.ok) {
+          form.style.display = 'none';
+          success.style.display = 'block';
+        } else {
+          alert('Something went wrong. Please call us: 323-454-3637');
+          btn.textContent = 'Request Free Estimate →';
+          btn.disabled = false;
+        }
+      } catch {
+        alert('Connection error. Please call: 323-454-3637');
+        btn.textContent = 'Request Free Estimate →';
+        btn.disabled = false;
+      }
+    });
+  }
+
+  // Scroll reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.service-card, .contact-item, .contact-aside').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    obs.observe(el);
+  });
+</script>
+</body>
+</html>
