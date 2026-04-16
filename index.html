@@ -69,16 +69,27 @@
     .services-header { max-width: 1200px; margin: 0 auto 52px; }
     .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2px; max-width: 1200px; margin: 0 auto; }
     .service-card { position: relative; aspect-ratio: 4/3; overflow: hidden; cursor: pointer; background: var(--black-card); }
-    .service-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease, filter 0.4s; filter: brightness(0.5) saturate(0.7); }
-    .service-card:hover img { transform: scale(1.07); filter: brightness(0.3); }
-    .img-placeholder { width: 100%; height: 100%; background: var(--black-card); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: rgba(245,168,0,0.12); transition: background 0.4s; }
-    .service-card:hover .img-placeholder { background: #111; }
-    .service-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, transparent 55%); display: flex; flex-direction: column; justify-content: flex-end; padding: 22px; transition: background 0.4s; }
+    /* SLIDER TRACK */
+    .slide-track { position: absolute; inset: 0; display: flex; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); will-change: transform; }
+    .slide-item { min-width: 100%; height: 100%; flex-shrink: 0; }
+    .slide-item img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.5) saturate(0.7); transition: filter 0.4s; display: block; }
+    .service-card:hover .slide-item img { filter: brightness(0.3); }
+    .slide-placeholder { width: 100%; height: 100%; background: var(--black-card); display: flex; align-items: center; justify-content: center; font-size: 2.8rem; color: rgba(245,168,0,0.1); transition: background 0.4s; }
+    .service-card:hover .slide-placeholder { background: #111; }
+    /* OVERLAY */
+    .service-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, transparent 55%); display: flex; flex-direction: column; justify-content: flex-end; padding: 22px 22px 14px; transition: background 0.4s; z-index: 2; pointer-events: none; }
     .service-card:hover .service-overlay { background: linear-gradient(to top, rgba(0,0,0,0.96) 0%, rgba(0,0,0,0.4) 100%); }
     .service-icon { font-size: 1.4rem; margin-bottom: 4px; }
     .service-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.55rem; color: var(--gold); line-height: 1; }
     .service-desc { font-size: 0.8rem; color: rgba(255,255,255,0.65); margin-top: 5px; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, opacity 0.3s; opacity: 0; line-height: 1.5; }
     .service-card:hover .service-desc { max-height: 60px; opacity: 1; }
+    /* DOTS */
+    .slide-dots { display: flex; gap: 5px; justify-content: center; margin-top: 8px; pointer-events: all; }
+    .slide-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.3); border: none; padding: 0; cursor: pointer; transition: background 0.3s, transform 0.2s; flex-shrink: 0; }
+    .slide-dot.active { background: var(--gold); transform: scale(1.3); }
+    /* photo count badge */
+    .slide-count { position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.55); color: rgba(255,255,255,0.7); font-size: 0.65rem; font-family: 'Barlow', sans-serif; font-weight: 600; letter-spacing: 0.05em; padding: 3px 8px; z-index: 3; display: none; }
+    .service-card.has-photos .slide-count { display: block; }
 
     /* ESTIMATE */
     #estimate { padding: 100px 5vw; background: var(--black); overflow: hidden; }
@@ -268,89 +279,105 @@
   </div>
   <div class="services-grid">
 
-    <!-- PLUMBING
-         HOW TO ADD PHOTO:
-         1. Upload photo to Cloudinary → copy URL
-         2. Replace <div class="img-placeholder">🔧</div>
-            with: <img src="YOUR_CLOUDINARY_URL" alt="Plumbing">
+    <!--
+    ╔══════════════════════════════════════════════════════════════════╗
+    ║  КАК ДОБАВЛЯТЬ ФОТО В КАРТОЧКУ                                   ║
+    ║                                                                  ║
+    ║  Найди нужную карточку по названию (data-name="Plumbing" и т.д.) ║
+    ║  В атрибуте data-photos добавь ссылки через запятую:             ║
+    ║                                                                  ║
+    ║  Сейчас (заглушка):                                              ║
+    ║  data-photos='[]'                                                ║
+    ║                                                                  ║
+    ║  После добавления фото:                                          ║
+    ║  data-photos='[                                                  ║
+    ║    "https://res.cloudinary.com/.../photo1.jpg",                  ║
+    ║    "https://res.cloudinary.com/.../photo2.jpg",                  ║
+    ║    "https://res.cloudinary.com/.../photo3.jpg"                   ║
+    ║  ]'                                                              ║
+    ║                                                                  ║
+    ║  Добавляй сколько угодно фото — слайдер сам всё сделает!         ║
+    ╚══════════════════════════════════════════════════════════════════╝
     -->
-    <div class="service-card">
-      <div class="img-placeholder">🔧</div>
-      <div class="service-overlay">
-        <div class="service-icon">🔧</div>
-        <div class="service-name">Plumbing</div>
-        <div class="service-desc">Leak repairs, pipe installation, faucets, toilets &amp; more.</div>
-      </div>
+
+    <!-- PLUMBING | Папка Cloudinary: plumbing/ -->
+    <div class="service-card"
+         data-icon="🔧"
+         data-name="Plumbing"
+         data-desc="Leak repairs, pipe installation, faucets, toilets &amp; more."
+         data-photos='[]'>
     </div>
 
-    <!-- ELECTRICAL -->
-    <div class="service-card">
-      <div class="img-placeholder">⚡</div>
-      <div class="service-overlay">
-        <div class="service-icon">⚡</div>
-        <div class="service-name">Electrical</div>
-        <div class="service-desc">Outlets, switches, ceiling fans, panel work &amp; lighting.</div>
-      </div>
+    <!-- ELECTRICAL | Папка Cloudinary: electrical/ -->
+    <div class="service-card"
+         data-icon="⚡"
+         data-name="Electrical"
+         data-desc="Outlets, switches, ceiling fans, panel work &amp; lighting."
+         data-photos='[]'>
     </div>
 
-    <!-- PAINTING -->
-    <div class="service-card">
-      <div class="img-placeholder">🎨</div>
-      <div class="service-overlay">
-        <div class="service-icon">🎨</div>
-        <div class="service-name">Painting</div>
-        <div class="service-desc">Interior &amp; exterior painting, walls, ceilings, trim.</div>
-      </div>
+    <!-- PAINTING | Папка Cloudinary: painting/ -->
+    <div class="service-card"
+         data-icon="🎨"
+         data-name="Painting"
+         data-desc="Interior &amp; exterior painting, walls, ceilings, trim."
+         data-photos='[]'>
     </div>
 
-    <!-- CARPENTRY -->
-    <div class="service-card">
-      <div class="img-placeholder">🪚</div>
-      <div class="service-overlay">
-        <div class="service-icon">🪚</div>
-        <div class="service-name">Carpentry</div>
-        <div class="service-desc">Custom woodwork, shelving, doors, frames &amp; repairs.</div>
-      </div>
+    <!-- CARPENTRY | Папка Cloudinary: carpentry/ -->
+    <div class="service-card"
+         data-icon="🪚"
+         data-name="Carpentry"
+         data-desc="Custom woodwork, shelving, doors, frames &amp; repairs."
+         data-photos='[]'>
     </div>
 
-    <!-- FURNITURE ASSEMBLY -->
-    <div class="service-card">
-      <div class="img-placeholder">🪑</div>
-      <div class="service-overlay">
-        <div class="service-icon">🪑</div>
-        <div class="service-name">Furniture Assembly</div>
-        <div class="service-desc">IKEA &amp; flat-pack furniture, fast &amp; clean.</div>
-      </div>
+    <!-- FURNITURE ASSEMBLY | Папка Cloudinary: assembly/ -->
+    <div class="service-card"
+         data-icon="🪑"
+         data-name="Furniture Assembly"
+         data-desc="IKEA &amp; flat-pack furniture, fast &amp; clean."
+         data-photos='[]'>
     </div>
 
-    <!-- WALLING -->
-    <div class="service-card">
-      <div class="img-placeholder">🧱</div>
-      <div class="service-overlay">
-        <div class="service-icon">🧱</div>
-        <div class="service-name">Walling</div>
-        <div class="service-desc">Drywall, patching, tiling, backsplash &amp; wall repairs.</div>
-      </div>
+    <!-- WALLING | Папка Cloudinary: walling/ -->
+    <div class="service-card"
+         data-icon="🧱"
+         data-name="Walling"
+         data-desc="Drywall, patching, tiling, backsplash &amp; wall repairs."
+         data-photos='[]'>
     </div>
 
-        <!-- OTHER -->
-    <div class="service-card">
-      <div class="https://res.cloudinary.com/dpoxihyvz/image/upload/q_auto/f_auto/v1776310004/Replacing_the_chimney_cap_with_a_new_one_zistyx.png">
-      <div class="service-overlay">
-        <div class="service-icon">🏠</div>
-        <div class="service-name">OTHER</div>
-        <div class="service-desc">Installation and repair of various structures, mostly custom-made &amp; other repairs.</div>
-      </div>
+    <!-- APPLIANCES | Папка Cloudinary: appliances/ -->
+    <div class="service-card"
+         data-icon="🍳"
+         data-name="Appliances"
+         data-desc="Oven, dishwasher, microwave, range hood &amp; more."
+         data-photos='[]'>
     </div>
 
-        <!-- HANDYMAN -->
-    <div class="service-card">
-      <div class="img-placeholder">🏠</div>
-      <div class="service-overlay">
-        <div class="service-icon">🏠</div>
-        <div class="service-name">HANDYMAN</div>
-        <div class="service-desc">Installation and repair of various structures, mostly custom-made &amp; handyman home service.</div>
-      </div>
+    <!-- OTHER | Папка Cloudinary: other/ -->
+    <div class="service-card"
+         data-icon="🏠"
+         data-name="Other Works"
+         data-desc="Custom repairs, installations &amp; various home improvements."
+         data-photos='["https://res.cloudinary.com/dpoxihyvz/image/upload/q_auto/f_auto/v1776310004/Replacing_the_chimney_cap_with_a_new_one_zistyx.png"]'>
+    </div>
+
+    <!-- HANDYMAN | Папка Cloudinary: handyman/ -->
+    <div class="service-card"
+         data-icon="🛠️"
+         data-name="Handyman"
+         data-desc="General home repairs, maintenance &amp; handyman services."
+         data-photos='[]'>
+    </div>
+
+    <!-- BEFORE & AFTER | Папка Cloudinary: before-after/ -->
+    <div class="service-card"
+         data-icon="✨"
+         data-name="Before &amp; After"
+         data-desc="See the transformation — real results from real jobs."
+         data-photos='[]'>
     </div>
 
   </div>
@@ -777,7 +804,102 @@
 
 <script>
   // ═══════════════════════════════════════════════════════
-  // SERVICE AREA — просто добавляй/убирай города в этот список
+  // СЛАЙДЕР КАРТОЧЕК — автоматически с точками
+  // ═══════════════════════════════════════════════════════
+  function initSliders() {
+    document.querySelectorAll('.service-card[data-icon]').forEach(card => {
+      const icon    = card.dataset.icon  || '🔧';
+      const name    = card.dataset.name  || '';
+      const desc    = card.dataset.desc  || '';
+      let   photos  = [];
+      try { photos = JSON.parse(card.dataset.photos || '[]'); } catch(e) {}
+
+      const hasPhotos = photos.length > 0;
+      if (hasPhotos) card.classList.add('has-photos');
+
+      // Build slide track
+      const track = document.createElement('div');
+      track.className = 'slide-track';
+
+      if (hasPhotos) {
+        photos.forEach(url => {
+          const item = document.createElement('div');
+          item.className = 'slide-item';
+          const img = document.createElement('img');
+          img.src = url;
+          img.alt = name;
+          img.loading = 'lazy';
+          item.appendChild(img);
+          track.appendChild(item);
+        });
+      } else {
+        // Заглушка
+        const item = document.createElement('div');
+        item.className = 'slide-item';
+        const ph = document.createElement('div');
+        ph.className = 'slide-placeholder';
+        ph.textContent = icon;
+        item.appendChild(ph);
+        track.appendChild(item);
+      }
+      card.appendChild(track);
+
+      // Photo count badge
+      if (hasPhotos && photos.length > 1) {
+        const badge = document.createElement('div');
+        badge.className = 'slide-count';
+        badge.textContent = `1 / ${photos.length}`;
+        card.appendChild(badge);
+      }
+
+      // Overlay
+      const overlay = document.createElement('div');
+      overlay.className = 'service-overlay';
+      overlay.innerHTML = `
+        <div class="service-icon">${icon}</div>
+        <div class="service-name">${name}</div>
+        <div class="service-desc">${desc}</div>
+        ${hasPhotos && photos.length > 1 ? '<div class="slide-dots"></div>' : ''}
+      `;
+      card.appendChild(overlay);
+
+      // Init dots & auto-slide only if multiple photos
+      if (!hasPhotos || photos.length <= 1) return;
+
+      let current = 0;
+      const dotsContainer = overlay.querySelector('.slide-dots');
+      const badge = card.querySelector('.slide-count');
+      const dots = [];
+
+      photos.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'slide-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', `Slide ${i + 1}`);
+        dot.addEventListener('click', (e) => { e.stopPropagation(); goTo(i); });
+        dotsContainer.appendChild(dot);
+        dots.push(dot);
+      });
+
+      function goTo(idx) {
+        current = idx;
+        track.style.transform = `translateX(-${current * 100}%)`;
+        dots.forEach((d, i) => d.classList.toggle('active', i === current));
+        if (badge) badge.textContent = `${current + 1} / ${photos.length}`;
+      }
+
+      // Auto-slide every 3.5s
+      let timer = setInterval(() => goTo((current + 1) % photos.length), 3500);
+
+      // Pause on hover
+      card.addEventListener('mouseenter', () => clearInterval(timer));
+      card.addEventListener('mouseleave', () => {
+        timer = setInterval(() => goTo((current + 1) % photos.length), 3500);
+      });
+    });
+  }
+
+  initSliders();
+
   // ═══════════════════════════════════════════════════════
   const SERVICE_AREAS = [
     "Simi Valley",
