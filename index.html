@@ -91,6 +91,23 @@
     .slide-count { position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.55); color: rgba(255,255,255,0.7); font-size: 0.65rem; font-family: 'Barlow', sans-serif; font-weight: 600; letter-spacing: 0.05em; padding: 3px 8px; z-index: 3; display: none; }
     .service-card.has-photos .slide-count { display: block; }
 
+    /* LIGHTBOX */
+    #lightbox { position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.95); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+    #lightbox.open { opacity: 1; pointer-events: all; }
+    #lightbox img { max-width: 92vw; max-height: 88vh; object-fit: contain; display: block; border: 1px solid rgba(245,168,0,0.15); box-shadow: 0 0 80px rgba(0,0,0,0.8); transition: transform 0.3s ease; }
+    #lightbox.open img { animation: lbIn 0.3s ease both; }
+    @keyframes lbIn { from { transform: scale(0.92); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .lb-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: rgba(255,255,255,0.7); font-size: 2rem; cursor: pointer; line-height: 1; transition: color 0.2s, transform 0.2s; z-index: 2; }
+    .lb-close:hover { color: var(--gold); transform: rotate(90deg); }
+    .lb-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); border: 1px solid rgba(245,168,0,0.25); color: var(--white); font-size: 1.4rem; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s, border-color 0.2s; z-index: 2; user-select: none; }
+    .lb-arrow:hover { background: rgba(245,168,0,0.15); border-color: var(--gold); color: var(--gold); }
+    .lb-prev { left: 16px; }
+    .lb-next { right: 16px; }
+    .lb-counter { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.2em; color: rgba(255,255,255,0.5); }
+    .lb-caption { position: absolute; bottom: 44px; left: 50%; transform: translateX(-50%); font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; color: var(--gold); letter-spacing: 0.1em; white-space: nowrap; }
+    /* zoom cursor hint */
+    .service-card.has-photos .slide-item img { cursor: zoom-in; }
+
     /* ESTIMATE */
     #estimate { padding: 100px 5vw; background: var(--black); overflow: hidden; }
     .estimate-inner { max-width: 780px; margin: 0 auto; }
@@ -844,6 +861,16 @@
 
 
 
+<!-- LIGHTBOX -->
+<div id="lightbox" role="dialog" aria-modal="true">
+  <button class="lb-close" id="lbClose" title="Close">✕</button>
+  <button class="lb-arrow lb-prev" id="lbPrev">&#8249;</button>
+  <img id="lbImg" src="" alt="">
+  <button class="lb-arrow lb-next" id="lbNext">&#8250;</button>
+  <div class="lb-caption" id="lbCaption"></div>
+  <div class="lb-counter" id="lbCounter"></div>
+</div>
+
 <script>
   // ═══════════════════════════════════════════════════════
   // СЛАЙДЕР КАРТОЧЕК — автоматически с точками
@@ -942,6 +969,85 @@
 
   initSliders();
 
+  // ═══════════════════════════════════════════════════════
+  // LIGHTBOX — увеличение фото по клику
+  // ═══════════════════════════════════════════════════════
+  const lb        = document.getElementById('lightbox');
+  const lbImg     = document.getElementById('lbImg');
+  const lbClose   = document.getElementById('lbClose');
+  const lbPrev    = document.getElementById('lbPrev');
+  const lbNext    = document.getElementById('lbNext');
+  const lbCaption = document.getElementById('lbCaption');
+  const lbCounter = document.getElementById('lbCounter');
+
+  let lbPhotos  = [];
+  let lbCurrent = 0;
+  let lbName    = '';
+
+  function lbOpen(photos, index, name) {
+    lbPhotos  = photos;
+    lbCurrent = index;
+    lbName    = name;
+    lbShow();
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function lbShow() {
+    lbImg.src         = lbPhotos[lbCurrent];
+    lbCaption.textContent = lbName;
+    lbCounter.textContent = lbPhotos.length > 1 ? `${lbCurrent + 1} / ${lbPhotos.length}` : '';
+    lbPrev.style.display  = lbPhotos.length > 1 ? 'flex' : 'none';
+    lbNext.style.display  = lbPhotos.length > 1 ? 'flex' : 'none';
+  }
+
+  function lbClose_fn() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(() => { lbImg.src = ''; }, 300);
+  }
+
+  lbClose.addEventListener('click', lbClose_fn);
+  lb.addEventListener('click', e => { if (e.target === lb) lbClose_fn(); });
+
+  lbPrev.addEventListener('click', () => {
+    lbCurrent = (lbCurrent - 1 + lbPhotos.length) % lbPhotos.length;
+    lbShow();
+  });
+
+  lbNext.addEventListener('click', () => {
+    lbCurrent = (lbCurrent + 1) % lbPhotos.length;
+    lbShow();
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape')     lbClose_fn();
+    if (e.key === 'ArrowLeft')  { lbCurrent = (lbCurrent - 1 + lbPhotos.length) % lbPhotos.length; lbShow(); }
+    if (e.key === 'ArrowRight') { lbCurrent = (lbCurrent + 1) % lbPhotos.length; lbShow(); }
+  });
+
+  // Hook clicks on slide images — открываем лайтбокс
+  // Делается после initSliders через делегирование
+  document.querySelector('.services-grid').addEventListener('click', e => {
+    const img = e.target.closest('.slide-item img');
+    if (!img) return;
+    const card = img.closest('.service-card');
+    if (!card) return;
+    let photos = [];
+    try { photos = JSON.parse(card.dataset.photos || '[]'); } catch(err) {}
+    if (!photos.length) return;
+    // Определяем текущий слайд по transform трека
+    const track = card.querySelector('.slide-track');
+    let idx = 0;
+    if (track) {
+      const tx = new DOMMatrix(getComputedStyle(track).transform).m41;
+      const w  = card.offsetWidth;
+      idx = Math.round(Math.abs(tx) / w);
+    }
+    lbOpen(photos, idx, card.dataset.name || '');
+  });
   // ═══════════════════════════════════════════════════════
   const SERVICE_AREAS = [
     "Simi Valley",
