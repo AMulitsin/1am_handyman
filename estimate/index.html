@@ -63,18 +63,6 @@
     .cta-form:hover { background: var(--gold); color: var(--black); }
 
     /* Price table */
-    .price-table-section { padding: 80px 5vw; background: var(--black-soft); }
-    .price-table-inner { max-width: 800px; margin: 0 auto; }
-    .ptable { width: 100%; border-collapse: collapse; margin-top: 36px; font-size: 0.88rem; }
-    .ptable thead th { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); padding: 10px 14px; border-bottom: 1px solid rgba(245,168,0,0.2); text-align: left; }
-    .ptable thead th:last-child, .ptable thead th:nth-child(2) { text-align: right; }
-    .ptable tbody tr { border-bottom: 1px solid rgba(255,255,255,0.04); }
-    .ptable tbody tr:hover { background: rgba(245,168,0,0.03); }
-    .ptable tbody td { padding: 10px 14px; color: rgba(255,255,255,0.65); }
-    .ptable tbody td:nth-child(2), .ptable tbody td:last-child { text-align: right; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; color: var(--white); }
-    .ptable-cat { background: rgba(245,168,0,0.06); }
-    .ptable-cat td { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); padding: 8px 14px; }
-    .ptable-note { font-size: 0.75rem; color: rgba(255,255,255,0.3); text-align: center; margin-top: 18px; line-height: 1.6; }
 
     @keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
   </style>
@@ -85,7 +73,7 @@
   <a href="/" class="nav-logo"><img src="https://res.cloudinary.com/dpoxihyvz/image/upload/q_auto/f_auto/v1776304105/2024-02-09_21-59-07-removebg-preview_lyngqy.png" alt="1AM Handyman" onerror="this.style.display='none'"><div class="nav-logo-text">I AM HANDYMAN<span>Simi Valley, CA</span></div></a>
   <ul class="nav-links"><li><a href="/#services">Services</a></li><li><a href="/#pricing">Pricing</a></li><li><a href="/#reviews">Reviews</a></li><li><a href="/#faq">FAQ</a></li><li><a href="/#contact">Contact</a></li>
     <li><a href="/estimate/" style="color:var(--gold)!important;">Estimate Calculator</a></li></ul>
-  <a href="sms:3234543637" class="nav-cta" style="background:transparent;border:2px solid var(--gold);color:var(--gold)!important;margin-right:8px;">Text Us</a>
+  <a href="sms:3234543637" class="nav-cta" style="background:var(--gold);color:#000!important;font-size:1rem;margin-right:6px;">💬 Text Us</a>
   <a href="tel:3234543637" class="nav-cta">Call Now</a>
 </nav>
 
@@ -215,7 +203,6 @@
           <span class="result-from">to</span>
           <span class="result-to" id="res-high"></span>
         </div>
-        <div class="result-typical" id="res-typical"></div>
         <div class="result-discount" id="res-discount" style="display:none"></div>
         <hr class="result-divider">
         <p class="result-disclaimer">
@@ -225,97 +212,14 @@
           <strong style="color:rgba(255,255,255,0.7)">Every on-site estimate is free and carries no obligation.</strong>
         </p>
         <div class="calc-cta">
-          <a href="tel:3234543637" class="cta-tel">📞 Call 323-454-3637</a>
+          <a href="sms:3234543637" class="cta-tel" style="background:var(--gold);color:#000;">💬 Text Us Now</a>
+          <a href="tel:3234543637" style="flex:1;border:1px solid rgba(245,168,0,0.3);color:rgba(255,255,255,0.6);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.9rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;padding:16px;text-align:center;display:block;min-width:150px;">📞 Call</a>
           <a href="/#estimate" class="cta-form">Request Free Estimate</a>
         </div>
       </div>
 
     </div><!-- /.calc-card -->
 
-  </div>
-</section>
-
-<!-- FULL PRICING TABLE -->
-<section class="price-table-section">
-  <div class="price-table-inner">
-    <p class="section-label">Reference Pricing</p>
-    <h2 class="section-title">Full Price Guide</h2>
-    <div class="gold-bar"></div>
-
-    <table class="ptable">
-      <thead><tr><th>Service</th><th>Starting at</th><th>Typical</th></tr></thead>
-      <tbody>
-        <tr class="ptable-cat"><td colspan="3">Minor Electrical Repairs</td></tr>
-        <tr><td>Outlet / Switch / Dimmer</td><td>$120</td><td>$140</td></tr>
-        <tr><td>Smoke / CO Detector</td><td>$120</td><td>$120</td></tr>
-        <tr><td>Ceiling Fan / Light Fixture</td><td>$180</td><td>$210</td></tr>
-        <tr><td>Outdoor / Motion Light</td><td>$180</td><td>$210</td></tr>
-        <tr><td>Exhaust Fan / Chandelier</td><td>$240</td><td>$280</td></tr>
-        <tr><td>Doorbell Installation</td><td>$240</td><td>$280</td></tr>
-
-        <tr class="ptable-cat"><td colspan="3">Minor Plumbing Repairs</td></tr>
-        <tr><td>Shower Head / Toilet Repair</td><td>$120</td><td>$140</td></tr>
-        <tr><td>Faucet / Toilet Installation</td><td>$180</td><td>$210</td></tr>
-        <tr><td>Garbage Disposal Replacement</td><td>$180</td><td>$210</td></tr>
-        <tr><td>Garbage Disposal Install</td><td>$240</td><td>$280</td></tr>
-        <tr><td>Sink Installation</td><td>$240</td><td>$280</td></tr>
-        <tr><td>Vanity Installation</td><td>$300</td><td>$350</td></tr>
-
-        <tr class="ptable-cat"><td colspan="3">TV Mounting</td></tr>
-        <tr><td>TV Mounting — under 55"</td><td>$120</td><td>$140</td></tr>
-        <tr><td>TV Mounting — 55" to 75"</td><td>$180</td><td>$210</td></tr>
-        <tr><td>TV Mounting — over 75"</td><td>$240</td><td>$280</td></tr>
-        <tr><td>Soundbar Installation</td><td>$120</td><td>$140</td></tr>
-        <tr><td>Wire / Cable Concealment</td><td>$180</td><td>$210</td></tr>
-
-        <tr class="ptable-cat"><td colspan="3">Drywall Repair</td></tr>
-        <tr><td>Hole Repair (small)</td><td>$120</td><td>$140</td></tr>
-        <tr><td>Texture Matching</td><td>$180</td><td>$210</td></tr>
-        <tr><td>Ceiling Repair</td><td>$240</td><td>$280</td></tr>
-        <tr><td>Water Damage / Popcorn Ceiling</td><td>$300</td><td>$350</td></tr>
-
-        <tr class="ptable-cat"><td colspan="3">Furniture Assembly</td></tr>
-        <tr><td>Desk / Shelf Assembly</td><td>$120</td><td>$140</td></tr>
-        <tr><td>Bed Frame Assembly</td><td>$180</td><td>$210</td></tr>
-        <tr><td>Wardrobe / PAX Assembly</td><td>$300</td><td>$350</td></tr>
-        <tr><td>Gym Equipment Assembly</td><td>$300</td><td>$350</td></tr>
-        <tr><td>Gazebo / Pergola</td><td>$480</td><td>$560</td></tr>
-
-        <tr class="ptable-cat"><td colspan="3">Painting</td></tr>
-        <tr><td>Trim Painting</td><td>$180</td><td>$210</td></tr>
-        <tr><td>Door Painting</td><td>$240</td><td>$280</td></tr>
-        <tr><td>Ceiling Painting</td><td>$300</td><td>$350</td></tr>
-        <tr><td>Interior Room Painting</td><td>$360</td><td>$420</td></tr>
-        <tr><td>Cabinet Painting</td><td>$480</td><td>$560</td></tr>
-
-        <tr class="ptable-cat"><td colspan="3">Carpentry</td></tr>
-        <tr><td>Shelving / Floating Shelf</td><td>$120</td><td>$140</td></tr>
-        <tr><td>Door Repair</td><td>$180</td><td>$210</td></tr>
-        <tr><td>Door / Cabinet Installation</td><td>$300</td><td>$350</td></tr>
-
-        <tr class="ptable-cat"><td colspan="3">Appliance Installation</td></tr>
-        <tr><td>Microwave / Oven Installation</td><td>$180</td><td>$210</td></tr>
-        <tr><td>Dishwasher / Range Hood</td><td>$240</td><td>$280</td></tr>
-        <tr><td>Cooktop Installation</td><td>$300</td><td>$350</td></tr>
-
-        <tr class="ptable-cat"><td colspan="3">Fence &amp; Gate Repair</td></tr>
-        <tr><td>Gate Alignment</td><td>$180</td><td>$210</td></tr>
-        <tr><td>Gate Repair</td><td>$240</td><td>$280</td></tr>
-        <tr><td>Fence Repair</td><td>$300</td><td>$350</td></tr>
-
-        <tr class="ptable-cat"><td colspan="3">Mounting &amp; General Handyman</td></tr>
-        <tr><td>Picture / Mirror / Blind</td><td>$120</td><td>$140</td></tr>
-        <tr><td>Service Call / Handyman Visit</td><td>$120</td><td>$140</td></tr>
-        <tr><td>Caulking</td><td>$180</td><td>$210</td></tr>
-        <tr><td>Pressure Washing</td><td>$360</td><td>$420</td></tr>
-      </tbody>
-    </table>
-
-    <p class="ptable-note">
-      All prices are starting estimates. Actual cost depends on scope, access, conditions, and materials.<br>
-      Multi-unit discount: 10% off each additional unit of the same service, up to 40% max.<br>
-      Minimum charge: $120. Every on-site estimate is free with no obligation.
-    </p>
   </div>
 </section>
 
@@ -335,13 +239,69 @@
   </div>
 </section>
 
+
+<!-- ESTIMATE FORM -->
+<section style="padding:80px 5vw;background:var(--black);">
+  <div style="max-width:700px;margin:0 auto;">
+    <p class="section-label">No Obligation</p>
+    <h2 class="section-title">Request a <em style="color:var(--gold);font-style:normal;">Free</em> Estimate</h2>
+    <div class="gold-bar"></div>
+    <p style="margin-top:16px;font-size:0.95rem;color:rgba(255,255,255,0.45);line-height:1.7;">
+      The calculator gives you a ballpark — but every project is different.
+      Send us the details and we'll get back to you within 2 hours with a real number.
+    </p>
+    <form class="estimate-form" action="https://formspree.io/f/mjgjyokj" method="POST"
+          id="estimateFormCalc" style="margin-top:36px;">
+      <div class="form-group">
+        <label for="ec_name">Your Name *</label>
+        <input type="text" id="ec_name" name="name" placeholder="John Smith" required>
+      </div>
+      <div class="form-group">
+        <label for="ec_phone">Phone Number *</label>
+        <input type="tel" id="ec_phone" name="phone" placeholder="(xxx) xxx-xxxx" required>
+      </div>
+      <div class="form-group">
+        <label for="ec_service">Service Needed *</label>
+        <select id="ec_service" name="service" required>
+          <option value="" disabled selected>Select a service...</option>
+          <option>Minor Plumbing Repairs</option>
+          <option>Minor Electrical Repairs</option>
+          <option>TV Mounting</option>
+          <option>Furniture Assembly</option>
+          <option>Drywall Repair</option>
+          <option>Painting</option>
+          <option>Carpentry</option>
+          <option>Appliance Installation</option>
+          <option>Fence &amp; Gate Repair</option>
+          <option>General Handyman</option>
+          <option>Multiple Services</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group full">
+        <label for="ec_msg">Describe Your Project *</label>
+        <textarea id="ec_msg" name="message"
+          placeholder="Tell us what needs to be done. Include your area (Simi Valley, Chatsworth, Woodland Hills, etc.) and any details that would help us give you an accurate price..." required></textarea>
+      </div>
+      <div class="form-submit">
+        <button type="submit">Send Estimate Request →</button>
+      </div>
+      <p class="form-note">We respond within 2 hours during business hours. No spam, no pressure.</p>
+    </form>
+    <div class="form-success" id="formSuccessCalc" style="display:none;">
+      <h3>✓ Request Sent!</h3>
+      <p>We'll contact you within 2 hours with a real estimate.</p>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <div class="sp-cta-banner">
   <h2>Ready for a Real Estimate?</h2>
   <p>Free, no obligation. We respond within 2 hours.</p>
   <div class="sp-cta-btns">
-    <a href="tel:3234543637" class="btn-primary">📞 Call 323-454-3637</a>
-    <a href="/#estimate" class="btn-outline">Submit Estimate Request</a>
+    <a href="sms:3234543637" class="btn-primary">💬 Text Us</a>
+    <a href="tel:3234543637" class="btn-outline">📞 Call 323-454-3637</a>
   </div>
 </div>
 
@@ -369,6 +329,35 @@
 </div>
 
 <script src="/assets/script.js"></script>
+<script>
+  // Estimate form on calculator page
+  const formCalc = document.getElementById('estimateFormCalc');
+  const successCalc = document.getElementById('formSuccessCalc');
+  if (formCalc) {
+    formCalc.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = formCalc.querySelector('button[type=submit]');
+      btn.textContent = 'Sending...'; btn.disabled = true;
+      try {
+        const res = await fetch(formCalc.action, {
+          method: 'POST', body: new FormData(formCalc),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          formCalc.style.display = 'none';
+          successCalc.style.display = 'block';
+          if (typeof gtag !== 'undefined') gtag('event', 'conversion_event_purchase', { event_source: 'calc_estimate_form' });
+        } else {
+          alert('Please call us: 323-454-3637');
+          btn.textContent = 'Send Estimate Request →'; btn.disabled = false;
+        }
+      } catch {
+        alert('Please call: 323-454-3637');
+        btn.textContent = 'Send Estimate Request →'; btn.disabled = false;
+      }
+    });
+  }
+</script>
 <script>
   // ── Quantity control ──────────────────────────────────────────
   let qty = 1;
@@ -422,8 +411,7 @@
     document.getElementById('res-service').textContent = label + (qty > 1 ? ` × ${qty}` : '');
     document.getElementById('res-low').textContent  = '$' + totalLow.toLocaleString();
     document.getElementById('res-high').textContent = '$' + totalHigh.toLocaleString();
-    document.getElementById('res-typical').textContent =
-      'Typical for this project: $' + typMid.toLocaleString();
+    // typical removed per client request
 
     const discEl = document.getElementById('res-discount');
     if (qty > 1) {
