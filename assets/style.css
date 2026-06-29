@@ -79,15 +79,14 @@ section { position: relative; z-index: 1; }
 .service-card:hover .slide-item img { filter: brightness(0.3); }
 .slide-placeholder { width: 100%; height: 100%; background: var(--black-card); display: flex; align-items: center; justify-content: center; font-size: 2.8rem; color: rgba(245,168,0,0.1); transition: background 0.4s; }
 .service-card:hover .slide-placeholder { background: #111; }
-.service-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, transparent 55%); display: flex; flex-direction: column; justify-content: flex-end; padding: 22px 22px 14px; transition: background 0.4s; z-index: 2; pointer-events: none; }
-.service-card:hover .service-overlay { background: linear-gradient(to top, rgba(0,0,0,0.96) 0%, rgba(0,0,0,0.4) 100%); }
+.service-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.15) 55%, transparent 80%); display: flex; flex-direction: column; justify-content: flex-end; padding: 22px 22px 18px; transition: background 0.4s; z-index: 2; pointer-events: none; }
+.service-card:hover .service-overlay { background: linear-gradient(to top, rgba(0,0,0,0.97) 0%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.2) 100%); }
 .service-icon { font-size: 1.4rem; margin-bottom: 4px; }
 .service-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.55rem; color: var(--gold); line-height: 1; }
 .service-desc { font-size: 0.8rem; color: rgba(255,255,255,0.65); margin-top: 5px; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, opacity 0.3s; opacity: 0; line-height: 1.5; }
 .service-card:hover .service-desc { max-height: 60px; opacity: 1; }
-.service-link { display: inline-block; margin-top: 10px; color: var(--gold); font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid rgba(245,168,0,0.5); transition: border-color 0.2s, color 0.2s; pointer-events: all; max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.4s ease, opacity 0.3s, border-color 0.2s; }
-.service-card:hover .service-link { max-height: 30px; opacity: 1; }
-.service-link:hover { border-color: var(--gold); }
+.service-link { display: inline-block; background: var(--gold); color: var(--black) !important; padding: 9px 22px; font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; margin-top: 12px; pointer-events: all; clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%); transition: background 0.2s, transform 0.15s; }
+.service-link:hover { background: var(--gold-dark); transform: translateY(-1px); }
 .slide-dots { display: flex; gap: 5px; justify-content: center; margin-top: 8px; pointer-events: all; }
 .slide-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.3); border: none; padding: 0; cursor: pointer; transition: background 0.3s, transform 0.2s; flex-shrink: 0; }
 .slide-dot.active { background: var(--gold); transform: scale(1.3); }
@@ -331,3 +330,51 @@ form.sp-mini-form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; ma
   .sp-hero { padding: 100px 5vw 60px; }
   .sp-hero h1 { font-size: clamp(2.4rem, 9vw, 3.5rem); }
 }
+
+/* ═══════ SERVICE PAGE PHOTO GALLERY ═══════ */
+.sp-gallery { padding: 80px 5vw; background: var(--black-soft); }
+.sp-gallery-inner { max-width: 1100px; margin: 0 auto; }
+.sp-gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 4px; margin-top: 36px; }
+.sp-gallery-item { aspect-ratio: 4/3; overflow: hidden; cursor: zoom-in; position: relative; background: var(--black-card); }
+.sp-gallery-item img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.85) saturate(0.8); transition: filter 0.4s, transform 0.5s; display: block; }
+.sp-gallery-item:hover img { filter: brightness(1) saturate(1); transform: scale(1.04); }
+.sp-gallery-note { font-size: 0.75rem; color: rgba(255,255,255,0.3); margin-top: 16px; font-family: 'Barlow Condensed', sans-serif; letter-spacing: 0.1em; text-transform: uppercase; }
+
+/* ═══════ SERVICE PAGE PROCESS STEPS ═══════ */
+.sp-process { padding: 80px 5vw; background: var(--black); }
+.sp-process-inner { max-width: 1100px; margin: 0 auto; }
+.sp-process-steps { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2px; margin-top: 44px; }
+.sp-process-step { background: var(--black-card); padding: 36px 28px; border-left: 3px solid rgba(245,168,0,0.2); transition: border-color 0.3s; }
+.sp-process-step:hover { border-color: var(--gold); }
+.sp-process-num { font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; color: rgba(245,168,0,0.12); line-height: 1; margin-bottom: 16px; }
+.sp-process-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; color: var(--gold); margin-bottom: 10px; letter-spacing: 0.03em; }
+.sp-process-text { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.7; }
+@media (max-width: 768px) {
+  .sp-gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .sp-process-steps { grid-template-columns: 1fr; }
+}
+
+/* ═══════ NEW SERVICE CARDS (main page) ═══════ */
+.services-grid-new { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2px; max-width: 1200px; margin: 0 auto; }
+.svc-card { background: var(--black-card); padding: 32px 28px; border-left: 3px solid transparent; transition: border-color 0.3s, background 0.3s; display: flex; flex-direction: column; }
+.svc-card:hover { border-color: var(--gold); background: #1f1f1f; }
+.svc-header { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+.svc-icon { font-size: 2rem; flex-shrink: 0; }
+.svc-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.55rem; color: var(--gold); line-height: 1; letter-spacing: 0.03em; }
+.svc-desc { font-size: 0.9rem; color: rgba(255,255,255,0.55); line-height: 1.7; flex: 1; margin-bottom: 14px; }
+.svc-price { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.8rem; color: rgba(255,255,255,0.35); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 20px; }
+.svc-btn { display: block; background: var(--gold); color: var(--black); font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 1.05rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; padding: 15px 20px; text-align: center; clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%); transition: background 0.2s, transform 0.15s; margin-top: auto; }
+.svc-btn:hover { background: var(--gold-dark); transform: translateY(-1px); }
+
+/* ═══════ PHOTO GALLERY (service pages) ═══════ */
+.sp-photo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 3px; margin-top: 40px; }
+.sp-photo-grid img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: filter 0.3s; cursor: pointer; }
+.sp-photo-grid img:hover { filter: brightness(1.08); }
+@media (max-width: 600px) { .sp-photo-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* ═══════ PROCESS STEPS (service pages) ═══════ */
+.sp-process { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 2px; margin-top: 44px; }
+.sp-step { background: var(--black-card); padding: 28px 24px; position: relative; }
+.sp-step-num { font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; color: rgba(245,168,0,0.12); line-height: 1; margin-bottom: 8px; }
+.sp-step-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.15rem; color: var(--gold); margin-bottom: 8px; letter-spacing: 0.03em; }
+.sp-step-text { font-size: 0.83rem; color: rgba(255,255,255,0.5); line-height: 1.65; }
