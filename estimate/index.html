@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Estimate Calculator | 1AM Handyman | Simi Valley</title>
+  <meta name="description" content="Get an instant ballpark estimate for handyman services in Simi Valley. TV mounting, plumbing, electrical, drywall repair and more. Free on-site estimate always available.">
+  <link rel="canonical" href="https://1amhandyman.com/estimate/">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600;700&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="icon" href="/favicon.ico">
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied'});</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XJET1K0E18"></script>
+  <script>gtag('js',new Date());gtag('config','G-XJET1K0E18',{anonymize_ip:true});</script>
+  <style>
+    /* Calculator-specific styles */
+    .calc-page { padding: 100px 5vw 80px; background: var(--black); min-height: 80vh; }
+    .calc-inner { max-width: 800px; margin: 0 auto; }
+
+    .calc-card { background: var(--black-card); border: 1px solid rgba(245,168,0,0.15); padding: 40px; margin-top: 40px; }
+    .calc-field { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+    .calc-field label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); }
+    .calc-field select, .calc-field input[type="number"] {
+      background: #111; border: 1px solid rgba(245,168,0,0.2);
+      color: var(--white); font-family: 'Barlow', sans-serif; font-size: 1rem;
+      padding: 13px 16px; outline: none; width: 100%;
+      transition: border-color 0.2s;
+    }
+    .calc-field select:focus, .calc-field input:focus { border-color: var(--gold); }
+    .calc-field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23F5A800' stroke-width='2' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; background-color: #111; cursor: pointer; }
+    .calc-field select option, .calc-field select optgroup { background: #111; color: var(--white); }
+
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media(max-width:600px){ .calc-grid { grid-template-columns: 1fr; } }
+
+    .qty-control { display: flex; align-items: center; gap: 0; }
+    .qty-btn { background: rgba(245,168,0,0.1); border: 1px solid rgba(245,168,0,0.25); color: var(--gold); font-size: 1.4rem; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s; flex-shrink: 0; user-select: none; }
+    .qty-btn:hover { background: rgba(245,168,0,0.2); }
+    .qty-display { background: #111; border-top: 1px solid rgba(245,168,0,0.2); border-bottom: 1px solid rgba(245,168,0,0.2); color: var(--white); font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; text-align: center; flex: 1; height: 46px; line-height: 46px; letter-spacing: 0.05em; }
+    .qty-note { font-size: 0.72rem; color: rgba(255,255,255,0.3); margin-top: 6px; }
+
+    .calc-run { width: 100%; background: var(--gold); color: var(--black); border: none; font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 0.12em; padding: 18px; cursor: pointer; clip-path: polygon(16px 0%, 100% 0%, calc(100% - 16px) 100%, 0% 100%); transition: background 0.2s, transform 0.15s; margin-top: 8px; }
+    .calc-run:hover { background: var(--gold-dark); transform: translateY(-2px); }
+    .calc-run:disabled { background: rgba(245,168,0,0.3); cursor: not-allowed; transform: none; }
+
+    .result-box { background: #0d0d0d; border: 1px solid rgba(245,168,0,0.3); border-left: 4px solid var(--gold); padding: 28px 28px 24px; margin-top: 28px; display: none; }
+    .result-box.visible { display: block; animation: fadeUp 0.4s ease both; }
+    .result-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.7rem; letter-spacing: 0.35em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 6px; }
+    .result-service { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; color: var(--gold); letter-spacing: 0.05em; margin-bottom: 16px; }
+    .result-range-row { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 6px; }
+    .result-from { font-size: 0.82rem; color: rgba(255,255,255,0.4); }
+    .result-price { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--white); line-height: 1; letter-spacing: 0.02em; }
+    .result-to { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: rgba(255,255,255,0.5); line-height: 1; }
+    .result-typical { font-size: 0.82rem; color: var(--gold); margin-bottom: 12px; }
+    .result-discount { display: inline-block; background: rgba(245,168,0,0.1); border: 1px solid rgba(245,168,0,0.25); color: var(--gold); font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 4px 12px; margin-bottom: 14px; }
+    .result-divider { border: none; border-top: 1px solid rgba(245,168,0,0.12); margin: 14px 0; }
+    .result-disclaimer { font-size: 0.8rem; color: rgba(255,255,255,0.35); line-height: 1.65; }
+
+    .calc-cta { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; }
+    .cta-tel { flex: 1; background: var(--gold); color: var(--black); font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.1em; text-decoration: none; text-align: center; padding: 16px; clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%); transition: background 0.2s; min-width: 180px; }
+    .cta-tel:hover { background: var(--gold-dark); }
+    .cta-form { flex: 1; border: 2px solid var(--gold); color: var(--gold); font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.1em; text-decoration: none; text-align: center; padding: 14px; clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%); transition: all 0.2s; min-width: 180px; }
+    .cta-form:hover { background: var(--gold); color: var(--black); }
+
+    /* Price table */
+    .price-table-section { padding: 80px 5vw; background: var(--black-soft); }
+    .price-table-inner { max-width: 800px; margin: 0 auto; }
+    .ptable { width: 100%; border-collapse: collapse; margin-top: 36px; font-size: 0.88rem; }
+    .ptable thead th { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); padding: 10px 14px; border-bottom: 1px solid rgba(245,168,0,0.2); text-align: left; }
+    .ptable thead th:last-child, .ptable thead th:nth-child(2) { text-align: right; }
+    .ptable tbody tr { border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .ptable tbody tr:hover { background: rgba(245,168,0,0.03); }
+    .ptable tbody td { padding: 10px 14px; color: rgba(255,255,255,0.65); }
+    .ptable tbody td:nth-child(2), .ptable tbody td:last-child { text-align: right; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; color: var(--white); }
+    .ptable-cat { background: rgba(245,168,0,0.06); }
+    .ptable-cat td { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); padding: 8px 14px; }
+    .ptable-note { font-size: 0.75rem; color: rgba(255,255,255,0.3); text-align: center; margin-top: 18px; line-height: 1.6; }
+
+    @keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo"><img src="https://res.cloudinary.com/dpoxihyvz/image/upload/q_auto/f_auto/v1776304105/2024-02-09_21-59-07-removebg-preview_lyngqy.png" alt="1AM Handyman" onerror="this.style.display='none'"><div class="nav-logo-text">I AM HANDYMAN<span>Simi Valley, CA</span></div></a>
+  <ul class="nav-links"><li><a href="/#services">Services</a></li><li><a href="/#pricing">Pricing</a></li><li><a href="/#reviews">Reviews</a></li><li><a href="/#faq">FAQ</a></li><li><a href="/#contact">Contact</a></li>
+    <li><a href="/estimate/" style="color:var(--gold)!important;">Estimate Calculator</a></li></ul>
+  <a href="sms:3234543637" class="nav-cta" style="background:transparent;border:2px solid var(--gold);color:var(--gold)!important;margin-right:8px;">Text Us</a>
+  <a href="tel:3234543637" class="nav-cta">Call Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="sp-hero">
+  <div class="sp-hero-inner">
+    <nav class="breadcrumb"><a href="/">Home</a><span>›</span><span>Estimate Calculator</span></nav>
+    <h1>Estimate Calculator</h1>
+    <p class="sp-sub">Get an instant ballpark price for your project. Select a service, enter quantity, and see a range — instantly. Every estimate is approximate. Final pricing always confirmed after a free on-site evaluation.</p>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section class="calc-page">
+  <div class="calc-inner">
+
+    <div class="calc-card">
+
+      <div class="calc-field">
+        <label>Select Service</label>
+        <select id="svc-select">
+          <option value="">— Choose a service —</option>
+          <optgroup label="Minor Electrical Repairs">
+            <option value="Outlet / Switch / Dimmer|120|140">Outlet / Switch / Dimmer Replacement</option>
+            <option value="Smoke or CO Detector|120|120">Smoke / CO Detector Installation</option>
+            <option value="Ceiling Fan Installation|180|210">Ceiling Fan Installation</option>
+            <option value="Ceiling Fan Replacement|180|210">Ceiling Fan Replacement</option>
+            <option value="Light Fixture Installation|180|210">Light Fixture Installation</option>
+            <option value="Outdoor / Motion Light|180|210">Outdoor / Motion Sensor Light</option>
+            <option value="Exhaust Fan Replacement|240|280">Exhaust Fan Replacement</option>
+            <option value="Chandelier Installation|240|280">Chandelier Installation</option>
+            <option value="Doorbell Installation|240|280">Doorbell Installation</option>
+          </optgroup>
+          <optgroup label="Minor Plumbing Repairs">
+            <option value="Shower Head Installation|120|140">Shower Head Installation</option>
+            <option value="Toilet Repair|120|140">Toilet Repair</option>
+            <option value="Faucet Replacement|180|210">Faucet Replacement</option>
+            <option value="Toilet Installation|180|210">Toilet Installation</option>
+            <option value="Garbage Disposal Replacement|180|210">Garbage Disposal Replacement</option>
+            <option value="Dishwasher Hookup|180|210">Dishwasher Hookup</option>
+            <option value="Garbage Disposal Installation|240|280">Garbage Disposal Installation</option>
+            <option value="Sink Installation|240|280">Sink Installation</option>
+            <option value="Vanity Installation|300|350">Vanity Installation</option>
+          </optgroup>
+          <optgroup label="TV Mounting">
+            <option value="TV Mounting (under 55&quot;)|120|140">TV Mounting — under 55"</option>
+            <option value="TV Mounting (55&quot;–75&quot;)|180|210">TV Mounting — 55" to 75"</option>
+            <option value="TV Mounting (over 75&quot;)|240|280">TV Mounting — over 75"</option>
+            <option value="Soundbar Installation|120|140">Soundbar Installation</option>
+            <option value="Wire / Cable Concealment|180|210">Wire / Cable Concealment</option>
+          </optgroup>
+          <optgroup label="Drywall Repair">
+            <option value="Hole Repair|120|140">Hole Repair (small)</option>
+            <option value="Texture Matching|180|210">Texture Matching</option>
+            <option value="Ceiling Repair|240|280">Ceiling Repair</option>
+            <option value="Water Damage Repair|300|350">Water Damage Repair</option>
+            <option value="Popcorn Ceiling Repair|300|350">Popcorn Ceiling Repair</option>
+          </optgroup>
+          <optgroup label="Furniture Assembly">
+            <option value="Desk Assembly|120|140">Desk Assembly</option>
+            <option value="Bed Frame Assembly|180|210">Bed Frame Assembly</option>
+            <option value="Wardrobe / PAX Assembly|300|350">Wardrobe / PAX Assembly</option>
+            <option value="Gym Equipment Assembly|300|350">Gym Equipment Assembly</option>
+            <option value="Gazebo / Pergola Assembly|480|560">Gazebo / Pergola Assembly</option>
+          </optgroup>
+          <optgroup label="Painting">
+            <option value="Trim Painting|180|210">Trim Painting</option>
+            <option value="Door Painting|240|280">Door Painting</option>
+            <option value="Ceiling Painting|300|350">Ceiling Painting</option>
+            <option value="Interior Room Painting|360|420">Interior Room Painting</option>
+            <option value="Cabinet Painting|480|560">Cabinet Painting</option>
+          </optgroup>
+          <optgroup label="Carpentry">
+            <option value="Shelving Installation|120|140">Shelving / Floating Shelf</option>
+            <option value="Door Repair|180|210">Door Repair</option>
+            <option value="Door Installation|300|350">Door Installation</option>
+            <option value="Cabinet Installation|300|350">Cabinet Installation</option>
+          </optgroup>
+          <optgroup label="Appliance Installation">
+            <option value="Microwave Installation|180|210">Microwave Installation</option>
+            <option value="Oven / Range Installation|180|210">Oven / Range Installation</option>
+            <option value="Dishwasher Installation|240|280">Dishwasher Installation</option>
+            <option value="Range Hood Installation|240|280">Range Hood Installation</option>
+            <option value="Cooktop Installation|300|350">Cooktop Installation</option>
+          </optgroup>
+          <optgroup label="Fence &amp; Gate Repair">
+            <option value="Gate Alignment|180|210">Gate Alignment</option>
+            <option value="Gate Repair|240|280">Gate Repair</option>
+            <option value="Fence Repair|300|350">Fence Repair</option>
+          </optgroup>
+          <optgroup label="Mounting &amp; Hanging">
+            <option value="Picture / Mirror Hanging|120|140">Picture / Mirror Hanging</option>
+            <option value="Blind Installation|120|140">Blind Installation</option>
+            <option value="Curtain Rod Installation|120|140">Curtain Rod Installation</option>
+          </optgroup>
+          <optgroup label="General Handyman">
+            <option value="General Handyman Visit|120|140">General Handyman Visit</option>
+            <option value="Caulking|180|210">Caulking</option>
+            <option value="Pressure Washing|360|420">Pressure Washing</option>
+          </optgroup>
+        </select>
+      </div>
+
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label>Number of units / items</label>
+          <div class="qty-control">
+            <div class="qty-btn" id="qty-minus" onclick="changeQty(-1)">−</div>
+            <div class="qty-display" id="qty-val">1</div>
+            <div class="qty-btn" id="qty-plus" onclick="changeQty(1)">+</div>
+          </div>
+          <div class="qty-note" id="discount-note">&nbsp;</div>
+        </div>
+        <div class="calc-field" style="justify-content:flex-end;">
+          <label>&nbsp;</label>
+          <button class="calc-run" id="calc-btn" onclick="calculate()">Calculate Estimate →</button>
+        </div>
+      </div>
+
+      <!-- RESULT -->
+      <div class="result-box" id="result-box">
+        <div class="result-label">Estimated price range</div>
+        <div class="result-service" id="res-service"></div>
+        <div class="result-range-row">
+          <span class="result-from">from</span>
+          <span class="result-price" id="res-low"></span>
+          <span class="result-from">to</span>
+          <span class="result-to" id="res-high"></span>
+        </div>
+        <div class="result-typical" id="res-typical"></div>
+        <div class="result-discount" id="res-discount" style="display:none"></div>
+        <hr class="result-divider">
+        <p class="result-disclaimer">
+          This is an <strong style="color:rgba(255,255,255,0.7)">approximate estimate only.</strong>
+          Every project is different — actual cost depends on scope, access, existing conditions, wall type, and materials.
+          Prices shown are not a quote or guarantee.
+          <strong style="color:rgba(255,255,255,0.7)">Every on-site estimate is free and carries no obligation.</strong>
+        </p>
+        <div class="calc-cta">
+          <a href="tel:3234543637" class="cta-tel">📞 Call 323-454-3637</a>
+          <a href="/#estimate" class="cta-form">Request Free Estimate</a>
+        </div>
+      </div>
+
+    </div><!-- /.calc-card -->
+
+  </div>
+</section>
+
+<!-- FULL PRICING TABLE -->
+<section class="price-table-section">
+  <div class="price-table-inner">
+    <p class="section-label">Reference Pricing</p>
+    <h2 class="section-title">Full Price Guide</h2>
+    <div class="gold-bar"></div>
+
+    <table class="ptable">
+      <thead><tr><th>Service</th><th>Starting at</th><th>Typical</th></tr></thead>
+      <tbody>
+        <tr class="ptable-cat"><td colspan="3">Minor Electrical Repairs</td></tr>
+        <tr><td>Outlet / Switch / Dimmer</td><td>$120</td><td>$140</td></tr>
+        <tr><td>Smoke / CO Detector</td><td>$120</td><td>$120</td></tr>
+        <tr><td>Ceiling Fan / Light Fixture</td><td>$180</td><td>$210</td></tr>
+        <tr><td>Outdoor / Motion Light</td><td>$180</td><td>$210</td></tr>
+        <tr><td>Exhaust Fan / Chandelier</td><td>$240</td><td>$280</td></tr>
+        <tr><td>Doorbell Installation</td><td>$240</td><td>$280</td></tr>
+
+        <tr class="ptable-cat"><td colspan="3">Minor Plumbing Repairs</td></tr>
+        <tr><td>Shower Head / Toilet Repair</td><td>$120</td><td>$140</td></tr>
+        <tr><td>Faucet / Toilet Installation</td><td>$180</td><td>$210</td></tr>
+        <tr><td>Garbage Disposal Replacement</td><td>$180</td><td>$210</td></tr>
+        <tr><td>Garbage Disposal Install</td><td>$240</td><td>$280</td></tr>
+        <tr><td>Sink Installation</td><td>$240</td><td>$280</td></tr>
+        <tr><td>Vanity Installation</td><td>$300</td><td>$350</td></tr>
+
+        <tr class="ptable-cat"><td colspan="3">TV Mounting</td></tr>
+        <tr><td>TV Mounting — under 55"</td><td>$120</td><td>$140</td></tr>
+        <tr><td>TV Mounting — 55" to 75"</td><td>$180</td><td>$210</td></tr>
+        <tr><td>TV Mounting — over 75"</td><td>$240</td><td>$280</td></tr>
+        <tr><td>Soundbar Installation</td><td>$120</td><td>$140</td></tr>
+        <tr><td>Wire / Cable Concealment</td><td>$180</td><td>$210</td></tr>
+
+        <tr class="ptable-cat"><td colspan="3">Drywall Repair</td></tr>
+        <tr><td>Hole Repair (small)</td><td>$120</td><td>$140</td></tr>
+        <tr><td>Texture Matching</td><td>$180</td><td>$210</td></tr>
+        <tr><td>Ceiling Repair</td><td>$240</td><td>$280</td></tr>
+        <tr><td>Water Damage / Popcorn Ceiling</td><td>$300</td><td>$350</td></tr>
+
+        <tr class="ptable-cat"><td colspan="3">Furniture Assembly</td></tr>
+        <tr><td>Desk / Shelf Assembly</td><td>$120</td><td>$140</td></tr>
+        <tr><td>Bed Frame Assembly</td><td>$180</td><td>$210</td></tr>
+        <tr><td>Wardrobe / PAX Assembly</td><td>$300</td><td>$350</td></tr>
+        <tr><td>Gym Equipment Assembly</td><td>$300</td><td>$350</td></tr>
+        <tr><td>Gazebo / Pergola</td><td>$480</td><td>$560</td></tr>
+
+        <tr class="ptable-cat"><td colspan="3">Painting</td></tr>
+        <tr><td>Trim Painting</td><td>$180</td><td>$210</td></tr>
+        <tr><td>Door Painting</td><td>$240</td><td>$280</td></tr>
+        <tr><td>Ceiling Painting</td><td>$300</td><td>$350</td></tr>
+        <tr><td>Interior Room Painting</td><td>$360</td><td>$420</td></tr>
+        <tr><td>Cabinet Painting</td><td>$480</td><td>$560</td></tr>
+
+        <tr class="ptable-cat"><td colspan="3">Carpentry</td></tr>
+        <tr><td>Shelving / Floating Shelf</td><td>$120</td><td>$140</td></tr>
+        <tr><td>Door Repair</td><td>$180</td><td>$210</td></tr>
+        <tr><td>Door / Cabinet Installation</td><td>$300</td><td>$350</td></tr>
+
+        <tr class="ptable-cat"><td colspan="3">Appliance Installation</td></tr>
+        <tr><td>Microwave / Oven Installation</td><td>$180</td><td>$210</td></tr>
+        <tr><td>Dishwasher / Range Hood</td><td>$240</td><td>$280</td></tr>
+        <tr><td>Cooktop Installation</td><td>$300</td><td>$350</td></tr>
+
+        <tr class="ptable-cat"><td colspan="3">Fence &amp; Gate Repair</td></tr>
+        <tr><td>Gate Alignment</td><td>$180</td><td>$210</td></tr>
+        <tr><td>Gate Repair</td><td>$240</td><td>$280</td></tr>
+        <tr><td>Fence Repair</td><td>$300</td><td>$350</td></tr>
+
+        <tr class="ptable-cat"><td colspan="3">Mounting &amp; General Handyman</td></tr>
+        <tr><td>Picture / Mirror / Blind</td><td>$120</td><td>$140</td></tr>
+        <tr><td>Service Call / Handyman Visit</td><td>$120</td><td>$140</td></tr>
+        <tr><td>Caulking</td><td>$180</td><td>$210</td></tr>
+        <tr><td>Pressure Washing</td><td>$360</td><td>$420</td></tr>
+      </tbody>
+    </table>
+
+    <p class="ptable-note">
+      All prices are starting estimates. Actual cost depends on scope, access, conditions, and materials.<br>
+      Multi-unit discount: 10% off each additional unit of the same service, up to 40% max.<br>
+      Minimum charge: $120. Every on-site estimate is free with no obligation.
+    </p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sp-section" style="max-width:800px;margin:0 auto;">
+  <div class="sp-section-inner">
+    <p class="section-label">Questions</p>
+    <h2 class="section-title">About Our Pricing</h2>
+    <div class="gold-bar"></div>
+    <div class="faq-list" style="margin-top:40px;">
+      <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">Are these prices guaranteed?<div class="faq-icon">+</div></div><div class="faq-answer">No. Every estimate shown here is a starting guide only. Final pricing is always confirmed after a free on-site evaluation. We never start work without your written or verbal approval of the price.</div></div>
+      <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">What affects the final price?<div class="faq-icon">+</div></div><div class="faq-answer">Scope of work, how easy the area is to access, existing conditions (is there blocking in the wall? Is there water damage?), materials required, and project complexity. Two jobs that sound the same can be very different in practice — that's why we always do a free estimate first.</div></div>
+      <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">How does the multi-unit discount work?<div class="faq-icon">+</div></div><div class="faq-answer">When you need the same service more than once in the same visit (for example, 3 outlets replaced, or 4 pictures hung), each additional unit gets a 10% discount — 2nd unit is 10% off, 3rd is 20% off, up to a maximum of 40% off. The first unit is always full price.</div></div>
+      <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">Is the free estimate really free?<div class="faq-icon">+</div></div><div class="faq-answer">Yes, completely. We come out, assess the job, give you a clear price. No obligation, no pressure. You decide if you want to move forward.</div></div>
+      <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">What is the minimum charge?<div class="faq-icon">+</div></div><div class="faq-answer">$120. This covers any service call and the first hour of work. Even the simplest jobs have a $120 minimum because we're coming to you, bringing professional tools, and doing the job right.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="sp-cta-banner">
+  <h2>Ready for a Real Estimate?</h2>
+  <p>Free, no obligation. We respond within 2 hours.</p>
+  <div class="sp-cta-btns">
+    <a href="tel:3234543637" class="btn-primary">📞 Call 323-454-3637</a>
+    <a href="/#estimate" class="btn-outline">Submit Estimate Request</a>
+  </div>
+</div>
+
+<div class="legal-disclaimer">
+  <p>1AM Handyman is not a licensed contractor. We provide small handyman repairs and home maintenance services within California handyman exemption limits. Work requiring a California Contractor's License is referred to licensed professionals. All prices shown are starting estimates — final pricing provided after a free on-site evaluation.</p>
+</div>
+
+<footer>
+  <div class="footer-brand">1AM HANDYMAN</div>
+  <div class="footer-copy">© 2026 1AM Handyman. Simi Valley, CA. <a href="#" id="privacyLink" style="color:rgba(255,255,255,0.4);text-decoration:none;font-size:0.72rem;margin-left:8px;">Privacy Policy</a></div>
+  <div class="footer-phone"><a href="tel:3234543637">323-454-3637</a></div>
+</footer>
+
+<div class="sticky-cta-bar">
+  <a href="tel:3234543637" class="sticky-cta-call">📞 Call Now</a>
+  <a href="/#estimate" class="sticky-cta-estimate">Free Estimate</a>
+</div>
+
+<div id="cookieBanner" style="position:fixed;bottom:0;left:0;right:0;z-index:9998;background:#111;border-top:1px solid rgba(245,168,0,0.2);padding:16px 5vw;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;transform:translateY(100%);transition:transform 0.4s ease;">
+  <p style="font-size:0.8rem;color:rgba(255,255,255,0.6);margin:0;">We use cookies & Google Analytics. <a href="#" id="privacyLink4" style="color:var(--gold);text-decoration:none;">Privacy Policy</a>.</p>
+  <div style="display:flex;gap:10px;">
+    <button onclick="acceptCookies()" style="background:var(--gold);color:#000;border:none;padding:9px 20px;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:0.85rem;letter-spacing:0.1em;cursor:pointer;">Accept</button>
+    <button onclick="declineCookies()" style="background:transparent;color:rgba(255,255,255,0.4);border:1px solid rgba(255,255,255,0.15);padding:9px 14px;font-size:0.8rem;cursor:pointer;">Decline</button>
+  </div>
+</div>
+
+<script src="/assets/script.js"></script>
+<script>
+  // ── Quantity control ──────────────────────────────────────────
+  let qty = 1;
+  const MAX_QTY = 20;
+
+  function changeQty(delta) {
+    qty = Math.max(1, Math.min(MAX_QTY, qty + delta));
+    document.getElementById('qty-val').textContent = qty;
+    updateDiscountNote();
+    document.getElementById('result-box').classList.remove('visible');
+  }
+
+  function updateDiscountNote() {
+    const note = document.getElementById('discount-note');
+    if (qty === 1) { note.innerHTML = '&nbsp;'; return; }
+    const disc = Math.min((qty - 1) * 10, 40);
+    note.textContent = `Multi-unit discount up to ${disc}% on additional units`;
+  }
+
+  // ── Pricing logic ─────────────────────────────────────────────
+  function floorTo10(n) { return Math.floor(n / 10) * 10; }
+
+  function calcTotal(unitBase, qty) {
+    let total = 0;
+    for (let i = 0; i < qty; i++) {
+      const disc = Math.min(i * 0.10, 0.40);
+      total += unitBase * (1 - disc);
+    }
+    return Math.max(120, floorTo10(total));
+  }
+
+  function calculate() {
+    const sel = document.getElementById('svc-select');
+    if (!sel.value) { sel.focus(); return; }
+
+    const parts = sel.value.split('|');
+    const label = parts[0];
+    const starting = parseInt(parts[1]);
+    const typical = parseInt(parts[2]);
+
+    // Range: starting -20% to typical +20%, min $120
+    const unitLow  = Math.max(120, floorTo10(starting * 0.8));
+    const unitHigh = floorTo10(typical * 1.2);
+
+    const totalLow  = calcTotal(unitLow,  qty);
+    const totalHigh = calcTotal(unitHigh, qty);
+
+    // Typical midpoint
+    const typMid = calcTotal(floorTo10((starting + typical) / 2), qty);
+
+    document.getElementById('res-service').textContent = label + (qty > 1 ? ` × ${qty}` : '');
+    document.getElementById('res-low').textContent  = '$' + totalLow.toLocaleString();
+    document.getElementById('res-high').textContent = '$' + totalHigh.toLocaleString();
+    document.getElementById('res-typical').textContent =
+      'Typical for this project: $' + typMid.toLocaleString();
+
+    const discEl = document.getElementById('res-discount');
+    if (qty > 1) {
+      const totalDisc = Math.min((qty - 1) * 10, 40);
+      discEl.textContent = `Includes multi-unit discount up to ${totalDisc}%`;
+      discEl.style.display = 'inline-block';
+    } else {
+      discEl.style.display = 'none';
+    }
+
+    document.getElementById('result-box').classList.add('visible');
+    document.getElementById('result-box').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // Reset result when service changes
+  document.getElementById('svc-select').addEventListener('change', function() {
+    document.getElementById('result-box').classList.remove('visible');
+  });
+</script>
+</body>
+</html>
