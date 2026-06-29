@@ -1,495 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Handyman Simi Valley | Repairs, TV Mounting, Drywall | 323-454-3637</title>
-  <meta name="description" content="Top-rated handyman in Simi Valley & San Fernando Valley. TV mounting, drywall repair, furniture assembly, minor plumbing & electrical repairs. Free estimates. Call 323-454-3637.">
-  <link rel="canonical" href="https://1amhandyman.com/">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Estimate Calculator | 1AM Handyman | Simi Valley</title>
+  <meta name="description" content="Get an instant ballpark estimate for handyman services in Simi Valley. TV mounting, plumbing, electrical, drywall repair and more. Free on-site estimate always available.">
+  <link rel="canonical" href="https://1amhandyman.com/estimate/">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600;700&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/style.css">
-  <!-- FAVICON -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="icon" href="/favicon.ico">
-  <!-- GA Consent -->
-  <script>
-    window.dataLayer=window.dataLayer||[];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied'});
-  </script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied'});</script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XJET1K0E18"></script>
   <script>gtag('js',new Date());gtag('config','G-XJET1K0E18',{anonymize_ip:true});</script>
-  <!-- SEO -->
-  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
-  <meta name="robots" content="index, follow">
-  <meta name="geo.region" content="US-CA">
-  <meta name="geo.placename" content="Simi Valley, California">
-  <!-- OG -->
-  <meta property="og:title" content="1AM Handyman — Simi Valley, CA | Repairs Done Right">
-  <meta property="og:description" content="Top-rated handyman in Simi Valley & San Fernando Valley. Fast response, honest pricing, 30-day guarantee. Free estimates. 323-454-3637.">
-  <meta property="og:url" content="https://1amhandyman.com">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://res.cloudinary.com/dpoxihyvz/image/upload/b_rgb:0A0A0A,c_pad,w_1200,h_630,q_auto,f_auto/v1776304105/2024-02-09_21-59-07-removebg-preview_lyngqy.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://res.cloudinary.com/dpoxihyvz/image/upload/b_rgb:0A0A0A,c_pad,w_1200,h_630,q_auto,f_auto/v1776304105/2024-02-09_21-59-07-removebg-preview_lyngqy.png">
-  <!-- Schema -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"HomeAndConstructionBusiness",
-    "name":"1AM Handyman",
-    "url":"https://1amhandyman.com",
-    "logo":"https://res.cloudinary.com/dpoxihyvz/image/upload/q_auto/f_auto/v1776304105/2024-02-09_21-59-07-removebg-preview_lyngqy.png",
-    "description":"Top-rated handyman in Simi Valley & San Fernando Valley. TV mounting, drywall repair, furniture assembly, minor plumbing & electrical repairs.",
-    "telephone":"+13234543637",
-    "email":"1am.handyman.sf@gmail.com",
-    "address":{"@type":"PostalAddress","addressLocality":"Simi Valley","addressRegion":"CA","addressCountry":"US"},
-    "geo":{"@type":"GeoCoordinates","latitude":34.2694,"longitude":-118.7815},
-    "areaServed":["Simi Valley","Thousand Oaks","Moorpark","Chatsworth","Woodland Hills","West Hills","Canoga Park","Calabasas","North Hollywood","Burbank","Northridge","Agoura Hills","Santa Clarita","San Fernando Valley"],
-    "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"07:00","closes":"19:00"}],
-    "priceRange":"$$",
-    "aggregateRating":{"@type":"AggregateRating","ratingValue":"5","bestRating":"5","ratingCount":"20"},
-    "sameAs":["https://www.instagram.com/1_am_handyman/","https://www.yelp.com/biz/i-am-handyman-simi-valley"]
-  }
-  </script>
+  <style>
+    /* Calculator-specific styles */
+    .calc-page { padding: 100px 5vw 80px; background: var(--black); min-height: 80vh; }
+    .calc-inner { max-width: 800px; margin: 0 auto; }
+
+    .calc-card { background: var(--black-card); border: 1px solid rgba(245,168,0,0.15); padding: 40px; margin-top: 40px; }
+    .calc-field { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+    .calc-field label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); }
+    .calc-field select, .calc-field input[type="number"] {
+      background: #111; border: 1px solid rgba(245,168,0,0.2);
+      color: var(--white); font-family: 'Barlow', sans-serif; font-size: 1rem;
+      padding: 13px 16px; outline: none; width: 100%;
+      transition: border-color 0.2s;
+    }
+    .calc-field select:focus, .calc-field input:focus { border-color: var(--gold); }
+    .calc-field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23F5A800' stroke-width='2' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; background-color: #111; cursor: pointer; }
+    .calc-field select option, .calc-field select optgroup { background: #111; color: var(--white); }
+
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media(max-width:600px){ .calc-grid { grid-template-columns: 1fr; } }
+
+    .qty-control { display: flex; align-items: center; gap: 0; }
+    .qty-btn { background: rgba(245,168,0,0.1); border: 1px solid rgba(245,168,0,0.25); color: var(--gold); font-size: 1.4rem; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s; flex-shrink: 0; user-select: none; }
+    .qty-btn:hover { background: rgba(245,168,0,0.2); }
+    .qty-display { background: #111; border-top: 1px solid rgba(245,168,0,0.2); border-bottom: 1px solid rgba(245,168,0,0.2); color: var(--white); font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; text-align: center; flex: 1; height: 46px; line-height: 46px; letter-spacing: 0.05em; }
+    .qty-note { font-size: 0.72rem; color: rgba(255,255,255,0.3); margin-top: 6px; }
+
+    .calc-run { width: 100%; background: var(--gold); color: var(--black); border: none; font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 0.12em; padding: 18px; cursor: pointer; clip-path: polygon(16px 0%, 100% 0%, calc(100% - 16px) 100%, 0% 100%); transition: background 0.2s, transform 0.15s; margin-top: 8px; }
+    .calc-run:hover { background: var(--gold-dark); transform: translateY(-2px); }
+    .calc-run:disabled { background: rgba(245,168,0,0.3); cursor: not-allowed; transform: none; }
+
+    .result-box { background: #0d0d0d; border: 1px solid rgba(245,168,0,0.3); border-left: 4px solid var(--gold); padding: 28px 28px 24px; margin-top: 28px; display: none; }
+    .result-box.visible { display: block; animation: fadeUp 0.4s ease both; }
+    .result-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.7rem; letter-spacing: 0.35em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 6px; }
+    .result-service { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; color: var(--gold); letter-spacing: 0.05em; margin-bottom: 16px; }
+    .result-range-row { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 6px; }
+    .result-from { font-size: 0.82rem; color: rgba(255,255,255,0.4); }
+    .result-price { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--white); line-height: 1; letter-spacing: 0.02em; }
+    .result-to { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: rgba(255,255,255,0.5); line-height: 1; }
+    .result-typical { font-size: 0.82rem; color: var(--gold); margin-bottom: 12px; }
+    .result-discount { display: inline-block; background: rgba(245,168,0,0.1); border: 1px solid rgba(245,168,0,0.25); color: var(--gold); font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 4px 12px; margin-bottom: 14px; }
+    .result-divider { border: none; border-top: 1px solid rgba(245,168,0,0.12); margin: 14px 0; }
+    .result-disclaimer { font-size: 0.8rem; color: rgba(255,255,255,0.35); line-height: 1.65; }
+
+    .calc-cta { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; }
+    .cta-tel { flex: 1; background: var(--gold); color: var(--black); font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.1em; text-decoration: none; text-align: center; padding: 16px; clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%); transition: background 0.2s; min-width: 180px; }
+    .cta-tel:hover { background: var(--gold-dark); }
+    .cta-form { flex: 1; border: 2px solid var(--gold); color: var(--gold); font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.1em; text-decoration: none; text-align: center; padding: 14px; clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%); transition: all 0.2s; min-width: 180px; }
+    .cta-form:hover { background: var(--gold); color: var(--black); }
+
+    /* Price table */
+    .price-table-section { padding: 80px 5vw; background: var(--black-soft); }
+    .price-table-inner { max-width: 800px; margin: 0 auto; }
+    .ptable { width: 100%; border-collapse: collapse; margin-top: 36px; font-size: 0.88rem; }
+    .ptable thead th { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); padding: 10px 14px; border-bottom: 1px solid rgba(245,168,0,0.2); text-align: left; }
+    .ptable thead th:last-child, .ptable thead th:nth-child(2) { text-align: right; }
+    .ptable tbody tr { border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .ptable tbody tr:hover { background: rgba(245,168,0,0.03); }
+    .ptable tbody td { padding: 10px 14px; color: rgba(255,255,255,0.65); }
+    .ptable tbody td:nth-child(2), .ptable tbody td:last-child { text-align: right; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; color: var(--white); }
+    .ptable-cat { background: rgba(245,168,0,0.06); }
+    .ptable-cat td { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); padding: 8px 14px; }
+    .ptable-note { font-size: 0.75rem; color: rgba(255,255,255,0.3); text-align: center; margin-top: 18px; line-height: 1.6; }
+
+    @keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+  </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <a href="/" class="nav-logo">
-    <img src="https://res.cloudinary.com/dpoxihyvz/image/upload/q_auto/f_auto/v1776304105/2024-02-09_21-59-07-removebg-preview_lyngqy.png" alt="1AM Handyman Logo" onerror="this.style.display='none'">
-    <div class="nav-logo-text">
-      I AM HANDYMAN
-      <span>Simi Valley, CA</span>
-    </div>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#pricing">Pricing</a></li>
-    <li><a href="#reviews">Reviews</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="#estimate">Free Estimate</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="/estimate/" style="color:var(--gold)!important;">Estimate Calculator</a></li>
-  </ul>
-  <a href="sms:3234543637" class="nav-cta" style="background:rgba(245,168,0,0.15);border:2px solid var(--gold);color:var(--gold)!important;margin-right:8px;font-size:0.9rem;">💬 Text Us</a>
-  <a href="#estimate" class="nav-cta">Free Estimate</a>
+  <a href="/" class="nav-logo"><img src="https://res.cloudinary.com/dpoxihyvz/image/upload/q_auto/f_auto/v1776304105/2024-02-09_21-59-07-removebg-preview_lyngqy.png" alt="1AM Handyman" onerror="this.style.display='none'"><div class="nav-logo-text">I AM HANDYMAN<span>Simi Valley, CA</span></div></a>
+  <ul class="nav-links"><li><a href="/#services">Services</a></li><li><a href="/#pricing">Pricing</a></li><li><a href="/#reviews">Reviews</a></li><li><a href="/#faq">FAQ</a></li><li><a href="/#contact">Contact</a></li>
+    <li><a href="/estimate/" style="color:var(--gold)!important;">Estimate Calculator</a></li></ul>
+  <a href="sms:3234543637" class="nav-cta" style="background:var(--gold);color:#000!important;margin-right:8px;">💬 Text Us</a>
+  <a href="tel:3234543637" class="nav-cta">Call Now</a>
 </nav>
 
 <!-- HERO -->
-<section id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-stripe"></div>
-  <div class="hero-content">
-    <img class="hero-logo"
-         src="https://res.cloudinary.com/dpoxihyvz/image/upload/q_auto/f_auto/v1776304105/2024-02-09_21-59-07-removebg-preview_lyngqy.png"
-         alt="1AM Handyman" onerror="this.style.display='none'">
-    <p class="hero-tagline">Simi Valley · San Fernando Valley · California</p>
-    <h1 class="hero-title">
-      Stop Putting It Off.
-      <em>Get It Fixed Right.</em>
-    </h1>
-    <p class="hero-sub">
-      Reliable home repairs — fast response, honest pricing, clean work.
-      TV mounting, drywall, furniture assembly, minor plumbing & electrical and much more.
-    </p>
-    <div class="hero-trust">
-      <span class="hero-pill">★ 5.0 on Yelp</span>
-      <span class="hero-pill">150+ Jobs Done</span>
-      <span class="hero-pill">Reply in 2 Hours</span>
-      <span class="hero-pill">Free Estimate</span>
-      <span class="hero-pill">30-Day Guarantee</span>
-    </div>
-    <div class="hero-btns">
-      <a href="#estimate" class="btn-primary">Get Free Estimate →</a>
-      <a href="tel:3234543637" class="btn-outline">📞 323-454-3637</a>
-    </div>
-    <div class="hero-phone">
-      <a href="tel:3234543637">323-454-3637</a>
-    </div>
+<section class="sp-hero">
+  <div class="sp-hero-inner">
+    <nav class="breadcrumb"><a href="/">Home</a><span>›</span><span>Estimate Calculator</span></nav>
+    <h1>Estimate Calculator</h1>
+    <p class="sp-sub">Get an instant ballpark price for your project. Select a service, enter quantity, and see a range — instantly. Every estimate is approximate. Final pricing always confirmed after a free on-site evaluation.</p>
   </div>
 </section>
 
-<!-- TRUST STRIP -->
-<div id="trust-strip">
-  <div class="trust-strip-inner">
-    <div class="trust-badge"><span class="trust-badge-icon">✓</span> Locally Owned</div>
-    <div class="trust-divider"></div>
-    <div class="trust-badge"><span class="trust-badge-icon">★</span> 5-Star Rated on Yelp</div>
-    <div class="trust-divider"></div>
-    <div class="trust-badge"><span class="trust-badge-icon">📍</span> Simi Valley Based</div>
-    <div class="trust-divider"></div>
-    <div class="trust-badge"><span class="trust-badge-icon">🛡️</span> 30-Day Guarantee</div>
-    <div class="trust-divider"></div>
-    <div class="trust-badge"><span class="trust-badge-icon">⚡</span> Free Estimate</div>
-  </div>
-</div>
+<!-- CALCULATOR -->
+<section class="calc-page">
+  <div class="calc-inner">
 
-<!-- SERVICES -->
-<section id="services" style="padding:100px 5vw;background:var(--black-soft);">
-  <div class="services-header">
-    <p class="section-label">What We Do</p>
-    <h2 class="section-title">Our Services</h2>
-    <div class="gold-bar"></div>
-    <p style="margin-top:16px;font-size:0.95rem;color:rgba(255,255,255,0.4);max-width:540px;">Professional home repairs for Simi Valley &amp; the San Fernando Valley. Click any service to see details, pricing, and book an estimate.</p>
-  </div>
-  <div class="services-grid-v3">
+    <div class="calc-card">
 
-    <a href="/minor-plumbing/" class="svc3-card">
-      <div class="svc3-photo"><img src="https://res.cloudinary.com/dpoxihyvz/image/upload/q_auto/f_auto/v1776319519/Replacing_the_kitchen_faucet_djiubo.png" alt="Minor plumbing repairs Simi Valley" loading="lazy"></div>
-      <div class="svc3-body">
-        <h3 class="svc3-name">Minor Plumbing Repairs</h3>
-        <p class="svc3-desc">Faucets, toilets, disposals, shut-off valves. Fixed cleanly — no unnecessary parts, no mess.</p>
-        <div class="svc3-pricing">
-          <span class="svc3-price-from">Starting at $140</span>
+      <div class="calc-field">
+        <label>Select Service</label>
+        <select id="svc-select">
+          <option value="">— Choose a service —</option>
+          <optgroup label="Minor Electrical Repairs">
+            <option value="Outlet / Switch / Dimmer|120|140">Outlet / Switch / Dimmer Replacement</option>
+            <option value="Smoke or CO Detector|120|120">Smoke / CO Detector Installation</option>
+            <option value="Ceiling Fan Installation|180|210">Ceiling Fan Installation</option>
+            <option value="Ceiling Fan Replacement|180|210">Ceiling Fan Replacement</option>
+            <option value="Light Fixture Installation|180|210">Light Fixture Installation</option>
+            <option value="Outdoor / Motion Light|180|210">Outdoor / Motion Sensor Light</option>
+            <option value="Exhaust Fan Replacement|240|280">Exhaust Fan Replacement</option>
+            <option value="Chandelier Installation|240|280">Chandelier Installation</option>
+            <option value="Doorbell Installation|240|280">Doorbell Installation</option>
+          </optgroup>
+          <optgroup label="Minor Plumbing Repairs">
+            <option value="Shower Head Installation|120|140">Shower Head Installation</option>
+            <option value="Toilet Repair|120|140">Toilet Repair</option>
+            <option value="Faucet Replacement|180|210">Faucet Replacement</option>
+            <option value="Toilet Installation|180|210">Toilet Installation</option>
+            <option value="Garbage Disposal Replacement|180|210">Garbage Disposal Replacement</option>
+            <option value="Dishwasher Hookup|180|210">Dishwasher Hookup</option>
+            <option value="Garbage Disposal Installation|240|280">Garbage Disposal Installation</option>
+            <option value="Sink Installation|240|280">Sink Installation</option>
+            <option value="Vanity Installation|300|350">Vanity Installation</option>
+          </optgroup>
+          <optgroup label="TV Mounting">
+            <option value="TV Mounting (under 55&quot;)|120|140">TV Mounting — under 55"</option>
+            <option value="TV Mounting (55&quot;–75&quot;)|180|210">TV Mounting — 55" to 75"</option>
+            <option value="TV Mounting (over 75&quot;)|240|280">TV Mounting — over 75"</option>
+            <option value="Soundbar Installation|120|140">Soundbar Installation</option>
+            <option value="Wire / Cable Concealment|180|210">Wire / Cable Concealment</option>
+          </optgroup>
+          <optgroup label="Drywall Repair">
+            <option value="Hole Repair|120|140">Hole Repair (small)</option>
+            <option value="Texture Matching|180|210">Texture Matching</option>
+            <option value="Ceiling Repair|240|280">Ceiling Repair</option>
+            <option value="Water Damage Repair|300|350">Water Damage Repair</option>
+            <option value="Popcorn Ceiling Repair|300|350">Popcorn Ceiling Repair</option>
+          </optgroup>
+          <optgroup label="Furniture Assembly">
+            <option value="Desk Assembly|120|140">Desk Assembly</option>
+            <option value="Bed Frame Assembly|180|210">Bed Frame Assembly</option>
+            <option value="Wardrobe / PAX Assembly|300|350">Wardrobe / PAX Assembly</option>
+            <option value="Gym Equipment Assembly|300|350">Gym Equipment Assembly</option>
+            <option value="Gazebo / Pergola Assembly|480|560">Gazebo / Pergola Assembly</option>
+          </optgroup>
+          <optgroup label="Painting">
+            <option value="Trim Painting|180|210">Trim Painting</option>
+            <option value="Door Painting|240|280">Door Painting</option>
+            <option value="Ceiling Painting|300|350">Ceiling Painting</option>
+            <option value="Interior Room Painting|360|420">Interior Room Painting</option>
+            <option value="Cabinet Painting|480|560">Cabinet Painting</option>
+          </optgroup>
+          <optgroup label="Carpentry">
+            <option value="Shelving Installation|120|140">Shelving / Floating Shelf</option>
+            <option value="Door Repair|180|210">Door Repair</option>
+            <option value="Door Installation|300|350">Door Installation</option>
+            <option value="Cabinet Installation|300|350">Cabinet Installation</option>
+          </optgroup>
+          <optgroup label="Appliance Installation">
+            <option value="Microwave Installation|180|210">Microwave Installation</option>
+            <option value="Oven / Range Installation|180|210">Oven / Range Installation</option>
+            <option value="Dishwasher Installation|240|280">Dishwasher Installation</option>
+            <option value="Range Hood Installation|240|280">Range Hood Installation</option>
+            <option value="Cooktop Installation|300|350">Cooktop Installation</option>
+          </optgroup>
+          <optgroup label="Fence &amp; Gate Repair">
+            <option value="Gate Alignment|180|210">Gate Alignment</option>
+            <option value="Gate Repair|240|280">Gate Repair</option>
+            <option value="Fence Repair|300|350">Fence Repair</option>
+          </optgroup>
+          <optgroup label="Mounting &amp; Hanging">
+            <option value="Picture / Mirror Hanging|120|140">Picture / Mirror Hanging</option>
+            <option value="Blind Installation|120|140">Blind Installation</option>
+            <option value="Curtain Rod Installation|120|140">Curtain Rod Installation</option>
+          </optgroup>
+          <optgroup label="General Handyman">
+            <option value="General Handyman Visit|120|140">General Handyman Visit</option>
+            <option value="Caulking|180|210">Caulking</option>
+            <option value="Pressure Washing|360|420">Pressure Washing</option>
+          </optgroup>
+        </select>
+      </div>
+
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label>Number of units / items</label>
+          <div class="qty-control">
+            <div class="qty-btn" id="qty-minus" onclick="changeQty(-1)">−</div>
+            <div class="qty-display" id="qty-val">1</div>
+            <div class="qty-btn" id="qty-plus" onclick="changeQty(1)">+</div>
+          </div>
+          <div class="qty-note" id="discount-note">&nbsp;</div>
         </div>
-        <div class="svc3-btn">View Service →</div>
-      </div>
-    </a>
-
-    <a href="/minor-electrical/" class="svc3-card">
-      <div class="svc3-photo"><img src="https://res.cloudinary.com/dpoxihyvz/image/upload/q_auto/f_auto/v1776319562/OUTDOOR_LIGHTING_INSTALLATION_kpjt17.png" alt="Minor electrical repairs Simi Valley" loading="lazy"></div>
-      <div class="svc3-body">
-        <h3 class="svc3-name">Minor Electrical Repairs</h3>
-        <p class="svc3-desc">Light fixtures, ceiling fans, exhaust fans, outlets, switches. Safe, correct, first time.</p>
-        <div class="svc3-pricing">
-          <span class="svc3-price-from">Starting at $140</span>
-        </div>
-        <div class="svc3-btn">View Service →</div>
-      </div>
-    </a>
-
-    <a href="/tv-mounting/" class="svc3-card">
-      <div class="svc3-photo"><img src="https://res.cloudinary.com/dpoxihyvz/image/upload/q_auto/f_auto/v1776321085/TV_INSTALLATION_szddl4.png" alt="TV mounting Simi Valley" loading="lazy"></div>
-      <div class="svc3-body">
-        <h3 class="svc3-name">TV Mounting</h3>
-        <p class="svc3-desc">All sizes from 32&quot; to 85&quot;+, all wall types. Cable management, full setup included.</p>
-        <div class="svc3-pricing">
-          <span class="svc3-price-from">Starting at $140</span>
-        </div>
-        <div class="svc3-btn">View Service →</div>
-      </div>
-    </a>
-
-    <a href="/drywall-repair/" class="svc3-card">
-      <div class="svc3-photo"><img src="https://res.cloudinary.com/dpoxihyvz/image/upload/q_auto/f_auto/v1776319563/WALL_REPAIR_AND_TEXTURING_AFTER_PHOTO_dxn7so.png" alt="Drywall repair Simi Valley" loading="lazy"></div>
-      <div class="svc3-body">
-        <h3 class="svc3-name">Drywall Repair</h3>
-        <p class="svc3-desc">Holes, cracks, ceiling damage — patched, textured, primed. Invisible results guaranteed.</p>
-        <div class="svc3-pricing">
-          <span class="svc3-price-from">Starting at $140</span>
-        </div>
-        <div class="svc3-btn">View Service →</div>
-      </div>
-    </a>
-
-    <a href="/furniture-assembly/" class="svc3-card">
-      <div class="svc3-photo"><img src="https://res.cloudinary.com/dpoxihyvz/image/upload/q_auto/f_auto/v1776321018/Assembly_and_installation_of_furniture_and_appliances_throughout_the_living_room_bunfzh.png" alt="Furniture assembly Simi Valley" loading="lazy"></div>
-      <div class="svc3-body">
-        <h3 class="svc3-name">Furniture Assembly</h3>
-        <p class="svc3-desc">IKEA, flat-pack, wardrobes, beds, shelves. Assembled correctly, level, and clean.</p>
-        <div class="svc3-pricing">
-          <span class="svc3-price-from">Starting at $140</span>
-        </div>
-        <div class="svc3-btn">View Service →</div>
-      </div>
-    </a>
-
-    <a href="/painting/" class="svc3-card">
-      <div class="svc3-photo"><img src="https://res.cloudinary.com/dpoxihyvz/image/upload/q_auto/f_auto/v1776321079/Preparing_to_Hand_Over_the_House_to_the_Landlord_When_Moving_Out_qg1wpr.png" alt="Painting services Simi Valley" loading="lazy"></div>
-      <div class="svc3-body">
-        <h3 class="svc3-name">Painting</h3>
-        <p class="svc3-desc">Interior walls, ceilings, trim. Properly prepped, clean lines, space left immaculate.</p>
-        <div class="svc3-pricing">
-          <span class="svc3-price-from">Starting at $210</span>
-        </div>
-        <div class="svc3-btn">View Service →</div>
-      </div>
-    </a>
-
-    <a href="/carpentry/" class="svc3-card">
-      <div class="svc3-photo"><img src="https://res.cloudinary.com/dpoxihyvz/image/upload/q_auto/f_auto/v1776319545/REPLACEMENT_OF_ROTTEN_WALL_AND_WINDOW_PARTS_-_WORK_IN_PROGRESS_pp8m44.png" alt="Carpentry services Simi Valley" loading="lazy"></div>
-      <div class="svc3-body">
-        <h3 class="svc3-name">Carpentry</h3>
-        <p class="svc3-desc">Shelving, doors, rot repair, custom woodwork. Built solid, square, and lasting.</p>
-        <div class="svc3-pricing">
-          <span class="svc3-price-from">Starting at $140</span>
-        </div>
-        <div class="svc3-btn">View Service →</div>
-      </div>
-    </a>
-
-    <a href="/appliance-installation/" class="svc3-card">
-      <div class="svc3-photo"><img src="https://res.cloudinary.com/dpoxihyvz/image/upload/q_auto/f_auto/v1776320404/REPLACING_THE_OVEN_vpyuh1.png" alt="Appliance installation Simi Valley" loading="lazy"></div>
-      <div class="svc3-body">
-        <h3 class="svc3-name">Appliance Installation</h3>
-        <p class="svc3-desc">Ovens, dishwashers, microwaves, range hoods — connected, tested, ready to use.</p>
-        <div class="svc3-pricing">
-          <span class="svc3-price-from">Starting at $210</span>
-        </div>
-        <div class="svc3-btn">View Service →</div>
-      </div>
-    </a>
-
-    <a href="/fence-repair/" class="svc3-card">
-      <div class="svc3-photo"><img src="https://res.cloudinary.com/dpoxihyvz/image/upload/q_auto/f_auto/v1776319548/CONSTRUCTION_OF_A_NEW_FENCE_xxjwfp.png" alt="Fence and gate repair Simi Valley" loading="lazy"></div>
-      <div class="svc3-body">
-        <h3 class="svc3-name">Fence &amp; Gate Repair</h3>
-        <p class="svc3-desc">Broken boards, leaning posts, sagging gates, rot — repaired with matching materials.</p>
-        <div class="svc3-pricing">
-          <span class="svc3-price-from">Starting at $210</span>
-        </div>
-        <div class="svc3-btn">View Service →</div>
-      </div>
-    </a>
-
-    <a href="/handyman/" class="svc3-card">
-      <div class="svc3-photo"><img src="https://res.cloudinary.com/dpoxihyvz/image/upload/q_auto/f_auto/v1776321059/HANGING_PHOTOS_AND_PAINTINGS_twfh5t.png" alt="General handyman services Simi Valley" loading="lazy"></div>
-      <div class="svc3-body">
-        <h3 class="svc3-name">General Handyman</h3>
-        <p class="svc3-desc">Honey-do lists, picture hanging, blinds, shelving — multiple tasks in one efficient visit.</p>
-        <div class="svc3-pricing">
-          <span class="svc3-price-from">Starting at $140</span>
-        </div>
-        <div class="svc3-btn">View Service →</div>
-      </div>
-    </a>
-
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="about-inner">
-    <div class="about-photo-wrap">
-      <img class="about-photo-img"
-           src="https://res.cloudinary.com/dpoxihyvz/image/upload/q_auto/f_auto/v1776744178/5131961422068780059_kuukyc.jpg"
-           alt="1AM Handyman — Simi Valley home repair team">
-    </div>
-    <div class="about-content">
-      <div class="about-tag">Simi Valley&#39;s Local Home Repair Company</div>
-      <p class="section-label">Our Approach</p>
-      <h2 class="section-title">Built on Trust, Not Transactions</h2>
-      <div class="gold-bar"></div>
-      <blockquote class="about-quote">
-        "Quality is not just a standard — it&#39;s a commitment. Every job done right builds trust, and trust builds lasting relationships."
-      </blockquote>
-      <p class="about-text">
-        At 1AM Handyman, our team doesn&#39;t finish a job and disappear. We want to be the company you call whenever something needs fixing — whether it&#39;s today, next month, or two years from now. Every project is treated like a long-term partnership, not a one-time transaction.
-      </p>
-      <p class="about-text">
-        We won&#39;t oversell you on materials or unnecessary work. Our team will give you the most practical, cost-effective solution — and explain exactly what we&#39;re doing and why. Because you deserve to understand the work being done in your home.
-      </p>
-      <p class="about-text">
-        When we leave, the problem is solved, the space is clean, and you have our number — because we&#39;re here for the long run.
-      </p>
-      <div class="about-signature">
-        Alex, Founder
-        <span>1AM Handyman · Local Home Repair Company · Simi Valley, CA</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- STATS -->
-<section id="stats">
-  <div class="stats-inner">
-    <div class="stat-item"><div class="stat-num">150+</div><div class="stat-label">Jobs Completed</div></div>
-    <div class="stat-item"><div class="stat-num">5★</div><div class="stat-label">Yelp Rating</div></div>
-    <div class="stat-item"><div class="stat-num">5+</div><div class="stat-label">Years Experience</div></div>
-    <div class="stat-item"><div class="stat-num">30mi</div><div class="stat-label">Service Radius</div></div>
-  </div>
-</section>
-
-<!-- WHY US -->
-<section id="why">
-  <div class="why-inner">
-    <p class="section-label">The Difference</p>
-    <h2 class="section-title">Why Choose Us</h2>
-    <div class="gold-bar"></div>
-    <div class="why-grid">
-      <div class="why-card"><div class="why-num">01</div><div class="why-title">Quality You Can Trust</div><div class="why-text">Every job is done with professional-grade tools and years of hands-on experience. We don't cut corners — your home deserves the best.</div></div>
-      <div class="why-card"><div class="why-num">02</div><div class="why-title">On Time, Every Time</div><div class="why-text">We show up when we say we will, finish what we started, and leave your space clean. Your time is valuable — we respect that.</div></div>
-      <div class="why-card"><div class="why-num">03</div><div class="why-title">Fair & Transparent Pricing</div><div class="why-text">No surprise charges. We estimate upfront — you know what you're paying before we start. If something unexpected comes up, we talk first.</div></div>
-      <div class="why-card"><div class="why-num">04</div><div class="why-title">Long-Term Relationship</div><div class="why-text">Our goal isn't a one-time job. We want to be your go-to handyman for years — the team you call whenever something breaks.</div></div>
-      <div class="why-card"><div class="why-num">05</div><div class="why-title">Individual Approach</div><div class="why-text">We listen to what you actually want, not what we think you need. Every home is different, every client is different — we adapt.</div></div>
-      <div class="why-card"><div class="why-num">06</div><div class="why-title">Your Peace of Mind</div><div class="why-text">When we leave, the problem is solved. No callbacks, no re-dos, no headaches. That's the standard we hold ourselves to every single time.</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section id="pricing">
-  <div class="pricing-inner">
-    <div class="pricing-intro">
-      <p class="section-label">Transparent Pricing</p>
-      <h2 class="section-title">How We Charge</h2>
-      <div class="gold-bar"></div>
-      <p>All prices shown are <strong style="color:var(--white)">starting prices</strong>. Actual cost depends on scope, access, and conditions. Every estimate is <strong style="color:var(--white)">free with no obligation</strong>.</p>
-    </div>
-    <div class="pricing-grid">
-      <div class="pricing-card">
-        <div class="pricing-card-title">🔧 Minor Plumbing Repairs</div>
-        <div class="pricing-row"><span class="pricing-service">Shower Head / Toilet Repair</span><span class="pricing-price">starting $140</span></div>
-        <div class="pricing-row"><span class="pricing-service">Faucet / Toilet Install</span><span class="pricing-price">starting $210</span></div>
-        <div class="pricing-row"><span class="pricing-service">Garbage Disposal</span><span class="pricing-price">starting $210</span></div>
-        <div class="pricing-row"><span class="pricing-service">Sink / Vanity Install</span><span class="pricing-price">starting $280</span></div>
-      </div>
-      <div class="pricing-card">
-        <div class="pricing-card-title">⚡ Minor Electrical Repairs</div>
-        <div class="pricing-row"><span class="pricing-service">Outlet / Switch / Dimmer</span><span class="pricing-price">starting $140</span></div>
-        <div class="pricing-row"><span class="pricing-service">Ceiling Fan / Light Fixture</span><span class="pricing-price">starting $210</span></div>
-        <div class="pricing-row"><span class="pricing-service">Exhaust Fan / Chandelier</span><span class="pricing-price">starting $280</span></div>
-        <div class="pricing-row"><span class="pricing-service">Outdoor / Doorbell / Motion</span><span class="pricing-price">starting $210</span></div>
-      </div>
-      <div class="pricing-card">
-        <div class="pricing-card-title">📺 TV Mounting</div>
-        <div class="pricing-row"><span class="pricing-service">TV Mounting under 55"</span><span class="pricing-price">starting $140</span></div>
-        <div class="pricing-row"><span class="pricing-service">TV Mounting 55" – 75"</span><span class="pricing-price">starting $210</span></div>
-        <div class="pricing-row"><span class="pricing-service">TV Mounting over 75"</span><span class="pricing-price">starting $280</span></div>
-        <div class="pricing-row"><span class="pricing-service">Wire Concealment</span><span class="pricing-price">starting $210</span></div>
-      </div>
-      <div class="pricing-card">
-        <div class="pricing-card-title">🍳 Appliance Installation</div>
-        <div class="pricing-row"><span class="pricing-service">Microwave Installation</span><span class="pricing-price">starting $210</span></div>
-        <div class="pricing-row"><span class="pricing-service">Oven / Range Installation</span><span class="pricing-price">starting $210</span></div>
-        <div class="pricing-row"><span class="pricing-service">Dishwasher / Range Hood</span><span class="pricing-price">starting $280</span></div>
-        <div class="pricing-row"><span class="pricing-service">Cooktop Installation</span><span class="pricing-price">starting $350</span></div>
-      </div>
-      <div class="pricing-card">
-        <div class="pricing-card-title">🪑 Assembly & Other</div>
-        <div class="pricing-row"><span class="pricing-service">Desk / Picture / Blind / Mirror</span><span class="pricing-price">starting $140</span></div>
-        <div class="pricing-row"><span class="pricing-service">Bed Frame / Shelving</span><span class="pricing-price">starting $210</span></div>
-        <div class="pricing-row"><span class="pricing-service">Wardrobe / Gym Equipment</span><span class="pricing-price">starting $350</span></div>
-        <div class="pricing-row"><span class="pricing-service">Painting, Drywall, Carpentry</span><span class="pricing-price">free estimate</span></div>
-      </div>
-      <div class="pricing-card">
-        <div class="pricing-card-title">💰 Hourly Rate</div>
-        <div class="pricing-row"><span class="pricing-service">Service Call (1 hour minimum)</span><span class="pricing-price">Starting $120</span></div>
-        <div class="pricing-row"><span class="pricing-service">Typical 2-hour visit</span><span class="pricing-price">Starting $140</span></div>
-        <div class="pricing-row"><span class="pricing-service">Each additional hour</span><span class="pricing-price">$70/hr</span></div>
-      </div>
-    </div>
-    <div class="pricing-note-box">
-      <h4>📌 How Our Pricing Works</h4>
-      <p>All prices assume standard conditions — replacing old with new, no custom modifications required. We estimate upfront; if something unexpected comes up mid-job, we talk before continuing. You pay for skill and speed, not the clock. For larger projects, we provide a <a href="#estimate" style="color:var(--gold)">free estimate</a>.</p>
-      <p style="margin-top:14px;padding-top:14px;border-top:1px solid rgba(245,168,0,0.15);">
-        <strong style="color:rgba(255,255,255,0.7);">Permit Note:</strong> Some minor electrical and plumbing work may require a city permit under California law. It is the homeowner's responsibility to obtain applicable permits. We are happy to advise on what may be required for your project.
-      </p>
-      <div class="price-disclaimer" style="margin-top:20px;"><strong>All prices are starting estimates only.</strong> Final pricing is determined after a free on-site evaluation. Every home and project is different — actual cost depends on scope, accessibility, existing conditions, and materials. We never start work without your approval.</div>
-  </div>
-</section>
-
-<!-- REVIEWS -->
-<section id="reviews">
-  <div class="reviews-inner">
-    <p class="section-label">What Clients Say</p>
-    <h2 class="section-title">Real Reviews</h2>
-    <div class="gold-bar"></div>
-    <div class="reviews-grid">
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">Alex repaired my fence. He identified the problem and suggested the most cost effective solution saving me hundreds. He was very responsive and worked quickly. I highly recommend him.</p>
-        <div class="review-author"><div class="review-avatar">K</div><div><div class="review-name">Keith C.</div><div class="review-meta">Fence &amp; Gate Repair · Verified</div></div><div class="review-source">Thumbtack</div></div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">Alex is great — among the best handymen I have ever worked with. He installed my ceiling fan, took care to clean up after himself, was very courteous and methodical. Would love to work with him again!</p>
-        <div class="review-author"><div class="review-avatar">D</div><div><div class="review-name">Deepak K.</div><div class="review-meta">Ceiling Fan Installation · Verified</div></div><div class="review-source">Verified</div></div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">1AM Handyman was great! He built my playhouse quickly and cleaned up after. Very professional and polite. Will be working with him again in the future.</p>
-        <div class="review-author"><div class="review-avatar">J</div><div><div class="review-name">Julianne H.</div><div class="review-meta">Play Equipment Assembly · Simi Valley · Verified</div></div><div class="review-source">Thumbtack</div></div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">It's not the first time I've used Alex's services. He is qualified and has high skill. The last time I left, there was a huge hole in my wall, and when I came back I couldn't believe my eyes — as if there was nothing there!</p>
-        <div class="review-author"><div class="review-avatar">A</div><div><div class="review-name">Anna M.</div><div class="review-meta">Drywall Repair · Repeat Client</div></div><div class="review-source">Thumbtack</div></div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">Alex came to my rescue when I had a slew of electrical issues. Not only did he expertly fix all the problems, but he also tackled other nagging jobs around the house. His professionalism and attention to detail were evident throughout.</p>
-        <div class="review-author"><div class="review-avatar">B</div><div><div class="review-name">Bair N.</div><div class="review-meta">Minor Electrical Repairs · Verified</div></div><div class="review-source">Thumbtack</div></div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">Very responsive. He reached out within a few hours even though I requested the job late in the evening. Arrived on time and got the job done quickly.</p>
-        <div class="review-author"><div class="review-avatar">J</div><div><div class="review-name">Jed D.</div><div class="review-meta">Handyman · Verified</div></div><div class="review-source">Thumbtack</div></div>
-      </div>
-    </div>
-    <div style="margin-top:52px;display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:860px;">
-      <div style="background:var(--black-card);padding:28px;border:1px solid rgba(255,255,255,0.06);">
-        <p style="font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">Live · Latest Review</p>
-        <div id="tt-review-widget-one">
-          <img src="https://cdn.thumbtackstatic.com/fe-assets-web/media/logos/thumbtack/wordmark.svg" alt="Thumbtack" style="height:22px;opacity:0.7;margin-bottom:14px;display:block;">
-          <script src="https://www.thumbtack.com/profile/widgets/scripts/?service_pk=505533643070177280&widget_id=review&type=one"></script>
+        <div class="calc-field" style="justify-content:flex-end;">
+          <label>&nbsp;</label>
+          <button class="calc-run" id="calc-btn" onclick="calculate()">Calculate Estimate →</button>
         </div>
       </div>
-      <div style="background:var(--black-card);padding:28px;border:1px solid rgba(255,255,255,0.06);display:flex;flex-direction:column;justify-content:center;gap:14px;">
-        <p style="font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">Leave Us a Review</p>
-        <a href="https://www.thumbtack.com/reviews/services/505533643070177280/write" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:12px;padding:14px 18px;border:1px solid rgba(245,168,0,0.25);color:var(--white);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.88rem;letter-spacing:0.08em;text-transform:uppercase;transition:all 0.2s;" onmouseover="this.style.borderColor='#009fd9'" onmouseout="this.style.borderColor='rgba(245,168,0,0.25)'">
-          <img src="https://cdn.thumbtackstatic.com/fe-assets-web/media/logos/thumbtack/wordmark.svg" alt="Thumbtack" style="height:16px;opacity:0.8;"> Review on Thumbtack →
-        </a>
-        <a href="https://www.yelp.com/biz/i-am-handyman-simi-valley" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:12px;padding:14px 18px;border:1px solid rgba(245,168,0,0.25);color:var(--white);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.88rem;letter-spacing:0.08em;text-transform:uppercase;transition:all 0.2s;" onmouseover="this.style.borderColor='#d32323'" onmouseout="this.style.borderColor='rgba(245,168,0,0.25)'">
-          <span style="color:#d32323;font-size:1.1rem">★</span> Review on Yelp →
-        </a>
-        <a href="https://g.page/r/Cd46mgCjwWo1EAE/review" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:12px;padding:14px 18px;border:1px solid rgba(245,168,0,0.25);color:var(--white);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.88rem;letter-spacing:0.08em;text-transform:uppercase;transition:all 0.2s;" onmouseover="this.style.borderColor='#4285F4'" onmouseout="this.style.borderColor='rgba(245,168,0,0.25)'">
-          <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-          Leave a Google Review →
-        </a>
+
+      <!-- RESULT -->
+      <div class="result-box" id="result-box">
+        <div class="result-label">Estimated price range</div>
+        <div class="result-service" id="res-service"></div>
+        <div class="result-range-row">
+          <span class="result-from">from</span>
+          <span class="result-price" id="res-low"></span>
+          <span class="result-from">to</span>
+          <span class="result-to" id="res-high"></span>
+        </div>
+        <div class="result-discount" id="res-discount" style="display:none"></div>
+        <hr class="result-divider">
+        <p class="result-disclaimer">
+          This is an <strong style="color:rgba(255,255,255,0.7)">approximate estimate only.</strong>
+          Every project is different — actual cost depends on scope, access, existing conditions, wall type, and materials.
+          Prices shown are not a quote or guarantee.
+          <strong style="color:rgba(255,255,255,0.7)">Every on-site estimate is free and carries no obligation.</strong>
+        </p>
+        <div class="calc-cta">
+          <a href="tel:3234543637" class="cta-tel">📞 Call 323-454-3637</a>
+          <a href="/#estimate" class="cta-form">Request Free Estimate</a>
+        </div>
       </div>
-    </div>
+
+    </div><!-- /.calc-card -->
+
   </div>
 </section>
 
 <!-- FAQ -->
-<section id="faq">
-  <div class="faq-inner">
-    <p class="section-label">Got Questions?</p>
-    <h2 class="section-title">FAQ</h2>
+<section class="sp-section" style="max-width:800px;margin:0 auto;">
+  <div class="sp-section-inner">
+    <p class="section-label">Questions</p>
+    <h2 class="section-title">About Our Pricing</h2>
     <div class="gold-bar"></div>
-    <div class="faq-list">
-      <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">How much does it cost just to come out and look?<div class="faq-icon">+</div></div><div class="faq-answer">Nothing. The estimate visit is completely free with no obligation. We come out, assess the job, give you a clear price — you decide if you want to move forward.</div></div>
-      <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">What if the job ends up being harder than expected?<div class="faq-icon">+</div></div><div class="faq-answer">If something unexpected comes up after we start, we stop and talk to you first — always. We don't add charges without your knowledge. If the extra work is minor, we typically absorb it. If significant, we discuss openly before continuing.</div></div>
-      <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">Do I need to buy materials, or do you handle that?<div class="faq-icon">+</div></div><div class="faq-answer">Both options work. For small items (outlets, fixtures, hardware) we typically carry common parts. For larger items we'll give you a recommendation on exactly what to buy — or we can source it at cost, no markup.</div></div>
-      <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">What if I'm not happy with the result?<div class="faq-icon">+</div></div><div class="faq-answer">Simple — we come back and make it right at no charge. We offer a 30-day workmanship guarantee on all jobs. Our reputation is built on long-term relationships, not one-off transactions.</div></div>
-      <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">How quickly can you come out?<div class="faq-icon">+</div></div><div class="faq-answer">For most jobs we can do a free estimate within 24–48 hours. For urgent situations (active leak, broken lock), we prioritize and often come out same day. Text or call and we'll tell you exactly when we can be there.</div></div>
-      <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">Do you work in my area?<div class="faq-icon">+</div></div><div class="faq-answer">We're based in Simi Valley and serve the entire San Fernando Valley and surrounding areas — Simi Valley, Thousand Oaks, Chatsworth, Canoga Park, Woodland Hills, West Hills, Calabasas, Agoura Hills, North Hollywood, Burbank, and more. If you're within ~30 miles, reach out.</div></div>
-      <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">Do you work on weekends?<div class="faq-icon">+</div></div><div class="faq-answer">Yes. We work Monday through Saturday. For urgent jobs, we're reachable on Sundays — just text us and we'll figure it out.</div></div>
-    </div>
-    <div class="promise-strip">
-      <div class="promise-item"><div class="promise-check">✓</div><div class="promise-text"><strong>Show up on time</strong>We text when on the way. Always.</div></div>
-      <div class="promise-item"><div class="promise-check">✓</div><div class="promise-text"><strong>No surprise charges</strong>Price is agreed before work starts.</div></div>
-      <div class="promise-item"><div class="promise-check">✓</div><div class="promise-text"><strong>Clean up after ourselves</strong>We leave your home the way we found it.</div></div>
-      <div class="promise-item"><div class="promise-check">✓</div><div class="promise-text"><strong>30-day guarantee</strong>Not happy? We come back, no charge.</div></div>
-      <div class="promise-item"><div class="promise-check">✓</div><div class="promise-text"><strong>Honest recommendation</strong>Most cost-effective solution, not the most expensive.</div></div>
+    <div class="faq-list" style="margin-top:40px;">
+      <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">Are these prices guaranteed?<div class="faq-icon">+</div></div><div class="faq-answer">No. Every estimate shown here is a starting guide only. Final pricing is always confirmed after a free on-site evaluation. We never start work without your written or verbal approval of the price.</div></div>
+      <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">What affects the final price?<div class="faq-icon">+</div></div><div class="faq-answer">Scope of work, how easy the area is to access, existing conditions (is there blocking in the wall? Is there water damage?), materials required, and project complexity. Two jobs that sound the same can be very different in practice — that's why we always do a free estimate first.</div></div>
+      <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">How does the multi-unit discount work?<div class="faq-icon">+</div></div><div class="faq-answer">When you need the same service more than once in the same visit (for example, 3 outlets replaced, or 4 pictures hung), each additional unit gets a 10% discount — 2nd unit is 10% off, 3rd is 20% off, up to a maximum of 40% off. The first unit is always full price.</div></div>
+      <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">Is the free estimate really free?<div class="faq-icon">+</div></div><div class="faq-answer">Yes, completely. We come out, assess the job, give you a clear price. No obligation, no pressure. You decide if you want to move forward.</div></div>
+      <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">What is the minimum charge?<div class="faq-icon">+</div></div><div class="faq-answer">$120. This covers any service call and the first hour of work. Even the simplest jobs have a $120 minimum because we're coming to you, bringing professional tools, and doing the job right.</div></div>
     </div>
   </div>
 </section>
 
-<!-- FREE ESTIMATE FORM -->
-<section id="estimate">
-  <div class="estimate-inner">
-    <div class="estimate-header">
-      <p class="section-label">No Obligation</p>
-      <h2 class="section-title">Get a <em>Free</em> Estimate</h2>
-      <div class="gold-bar"></div>
-      <p>Tell us what you need — we'll get back to you within 24 hours. No hidden fees, no surprises.</p>
-    </div>
-    <form class="estimate-form" action="https://formspree.io/f/mjgjyokj" method="POST" id="estimateForm">
-      <div class="form-group"><label for="name">Your Name *</label><input type="text" id="name" name="name" placeholder="John Smith" required></div>
-      <div class="form-group"><label for="phone">Phone Number *</label><input type="tel" id="phone" name="phone" placeholder="(xxx) xxx-xxxx" required></div>
-      <div class="form-group"><label for="service">Service Needed *</label>
-        <select id="service" name="service" required>
+
+<!-- ESTIMATE FORM -->
+<section style="padding:80px 5vw;background:var(--black);">
+  <div style="max-width:700px;margin:0 auto;">
+    <p class="section-label">No Obligation</p>
+    <h2 class="section-title">Request a <em style="color:var(--gold);font-style:normal;">Free</em> Estimate</h2>
+    <div class="gold-bar"></div>
+    <p style="margin-top:16px;font-size:0.95rem;color:rgba(255,255,255,0.45);line-height:1.7;">
+      The calculator gives you a ballpark — but every project is different.
+      Send us the details and we'll get back to you within 2 hours with a real number.
+    </p>
+    <form class="estimate-form" action="https://formspree.io/f/mjgjyokj" method="POST"
+          id="estimateFormCalc" style="margin-top:36px;">
+      <div class="form-group">
+        <label for="ec_name">Your Name *</label>
+        <input type="text" id="ec_name" name="name" placeholder="John Smith" required>
+      </div>
+      <div class="form-group">
+        <label for="ec_phone">Phone Number *</label>
+        <input type="tel" id="ec_phone" name="phone" placeholder="(xxx) xxx-xxxx" required>
+      </div>
+      <div class="form-group">
+        <label for="ec_service">Service Needed *</label>
+        <select id="ec_service" name="service" required>
           <option value="" disabled selected>Select a service...</option>
           <option>Minor Plumbing Repairs</option>
           <option>Minor Electrical Repairs</option>
@@ -505,150 +289,158 @@
           <option>Other</option>
         </select>
       </div>
-      <div class="form-group full"><label for="message">Describe Your Project *</label><textarea id="message" name="message" placeholder="Please describe what needs to be done, and your address or area (Simi Valley, Thousand Oaks, Chatsworth, etc.)..." required></textarea></div>
-      <div class="form-submit"><button type="submit">Request Free Estimate →</button></div>
-      <p class="form-note">We'll contact you within 24 hours. Your info is never shared. By submitting you agree to our <a href="#" id="privacyLink2" style="color:var(--gold);text-decoration:none;">Privacy Policy</a>.</p>
-    </form>
-    <div class="form-success" id="formSuccess"><h3>✓ Request Sent!</h3><p>Thank you! We'll contact you within 24 hours.</p></div>
-  </div>
-</section>
-
-<!-- CONNECT -->
-<section id="connect">
-  <div class="connect-inner">
-    <div class="connect-header">
-      <p class="section-label">Stay In Touch</p>
-      <h2 class="section-title">Connect With Us</h2>
-      <div class="gold-bar"></div>
-      <p>Reach out the way that works best for you.</p>
-    </div>
-    <div class="connect-grid">
-      <a href="https://www.instagram.com/1_am_handyman/" target="_blank" rel="noopener noreferrer" class="connect-card instagram">
-        <div class="connect-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div>
-        <div class="connect-name">Instagram</div><div class="connect-handle">@1_am_handyman</div>
-      </a>
-      <a href="tel:3234543637" class="connect-card phone"><div class="connect-icon">📞</div><div class="connect-name">Call / SMS</div><div class="connect-handle">323-454-3637</div></a>
-      <a href="mailto:1am.handyman.sf@gmail.com" class="connect-card email"><div class="connect-icon">✉️</div><div class="connect-name">Email</div><div class="connect-handle">1am.handyman.sf@gmail.com</div></a>
-      <a href="https://www.yelp.com/biz/i-am-handyman-simi-valley" target="_blank" rel="noopener noreferrer" class="connect-card" style="border-color:rgba(211,35,35,0.3)"><div class="connect-icon" style="color:#d32323;font-size:1.8rem">★</div><div class="connect-name">Yelp</div><div class="connect-handle">5.0 · I AM Handyman</div></a>
-      <a href="https://g.page/r/Cd46mgCjwWo1EAE/review" target="_blank" rel="noopener noreferrer" class="connect-card" style="border-color:rgba(66,133,244,0.3)">
-        <div class="connect-icon"><svg width="28" height="28" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg></div>
-        <div class="connect-name">Google</div><div class="connect-handle">Leave a Review</div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="contact-inner">
-    <div>
-      <p class="section-label">Reach Us</p>
-      <h2 class="section-title">Contact</h2>
-      <div class="gold-bar"></div>
-      <div class="contact-item"><div class="contact-icon">📞</div><div><div class="contact-label">Phone &amp; SMS</div><div class="contact-value"><a href="tel:3234543637">323-454-3637</a></div></div></div>
-      <div class="contact-item"><div class="contact-icon">✉️</div><div><div class="contact-label">Email</div><div class="contact-value"><a href="mailto:1am.handyman.sf@gmail.com">1am.handyman.sf@gmail.com</a></div></div></div>
-      <div class="contact-item"><div class="contact-icon">📍</div><div><div class="contact-label">Based In</div><div class="contact-value">Simi Valley, CA</div></div></div>
-      <div class="contact-item"><div class="contact-icon">🕐</div><div><div class="contact-label">Hours</div><div class="contact-value">Mon – Sat: 7:00 AM – 7:00 PM</div></div></div>
-      <div class="social-links"><a href="https://www.instagram.com/1_am_handyman/" target="_blank" rel="noopener noreferrer" class="social-btn">📸 Instagram</a></div>
-    </div>
-    <div class="contact-aside">
-      <div class="area-label">Service Area</div>
-      <p class="area-note">Based in Simi Valley — we serve a 30-mile radius. Not sure if we cover your location? Just call or text!</p>
-      <div class="area-tags" id="serviceAreaTags"></div>
-      <div style="margin-top:32px;"><a href="#estimate" class="btn-primary">Book Now →</a></div>
-    </div>
-  </div>
-</section>
-
-<!-- CAREERS -->
-<section id="careers">
-  <div class="careers-inner">
-    <div class="careers-header">
-      <p class="section-label">Join The Team</p>
-      <h2 class="section-title"><em>Careers</em></h2>
-      <div class="gold-bar"></div>
-      <p>Looking to grow with a professional team? Fill out the form below and we'll be in touch. We're always open to talented, motivated people.</p>
-    </div>
-    <form class="careers-form estimate-form" action="https://formspree.io/f/xjgjyogj" method="POST" id="careersForm">
-      <div class="form-group"><label for="c_name">First &amp; Last Name *</label><input type="text" id="c_name" name="name" placeholder="Alex Johnson" required></div>
-      <div class="form-group"><label for="c_phone">Phone Number *</label><input type="tel" id="c_phone" name="phone" placeholder="(xxx) xxx-xxxx" required></div>
-      <div class="form-group"><label for="c_email">Email Address *</label><input type="email" id="c_email" name="email" placeholder="alex@email.com" required></div>
-      <div class="form-group"><label for="c_position">Position Interested In *</label>
-        <select id="c_position" name="position" required>
-          <option value="" disabled selected>Select a role...</option>
-          <option>Technician / Handyman</option><option>Estimator</option><option>Sales</option><option>Marketing</option><option>Other</option>
-        </select>
+      <div class="form-group full">
+        <label for="ec_msg">Describe Your Project *</label>
+        <textarea id="ec_msg" name="message"
+          placeholder="Tell us what needs to be done. Include your area (Simi Valley, Chatsworth, Woodland Hills, etc.) and any details that would help us give you an accurate price..." required></textarea>
       </div>
-      <div class="form-group full"><label for="c_experience">What Can You Do &amp; How Long Have You Done It? *</label><textarea id="c_experience" name="experience" placeholder="Example: I've been doing electrical work for 5 years, plumbing for 3 years..." required></textarea></div>
-      <div class="form-submit"><button type="submit">Submit Application →</button></div>
-      <p class="form-note">We review every application and will contact you if there's a match. By submitting you agree to our <a href="#" id="privacyLink3" style="color:var(--gold);text-decoration:none;">Privacy Policy</a>.</p>
+      <div class="form-submit">
+        <button type="submit">Send Estimate Request →</button>
+      </div>
+      <p class="form-note">We respond within 2 hours during business hours. No spam, no pressure.</p>
     </form>
-    <div class="form-success" id="careersSuccess"><h3>✓ Application Received!</h3><p>Thank you! We'll review your application and reach out if there's a good fit.</p></div>
+    <div class="form-success" id="formSuccessCalc" style="display:none;">
+      <h3>✓ Request Sent!</h3>
+      <p>We'll contact you within 2 hours with a real estimate.</p>
+    </div>
   </div>
 </section>
 
-
-<div class="legal-disclaimer">
-  <p>1AM Handyman is not a licensed contractor. We provide small handyman repairs and home maintenance services within California handyman exemption limits. Work requiring a California Contractor's License is referred to licensed professionals. All prices are starting estimates — final pricing provided after a free on-site evaluation.</p>
+<!-- CTA -->
+<div class="sp-cta-banner">
+  <h2>Ready for a Real Estimate?</h2>
+  <p>Free, no obligation. We respond within 2 hours.</p>
+  <div class="sp-cta-btns">
+    <a href="tel:3234543637" class="btn-primary">📞 Call 323-454-3637</a>
+    <a href="/#estimate" class="btn-outline">Submit Estimate Request</a>
+  </div>
 </div>
 
-<!-- FOOTER -->
+<div class="legal-disclaimer">
+  <p>1AM Handyman is not a licensed contractor. We provide small handyman repairs and home maintenance services within California handyman exemption limits. Work requiring a California Contractor's License is referred to licensed professionals. All prices shown are starting estimates — final pricing provided after a free on-site evaluation.</p>
+</div>
+
 <footer>
   <div class="footer-brand">1AM HANDYMAN</div>
-  <div class="footer-copy">© 2026 1AM Handyman. Simi Valley, CA. All rights reserved. <span style="margin-left:12px;"><a href="#privacy" id="privacyLink" style="color:rgba(255,255,255,0.4);text-decoration:none;font-size:0.72rem;">Privacy Policy</a></span></div>
+  <div class="footer-copy">© 2026 1AM Handyman. Simi Valley, CA. <a href="#" id="privacyLink" style="color:rgba(255,255,255,0.4);text-decoration:none;font-size:0.72rem;margin-left:8px;">Privacy Policy</a></div>
   <div class="footer-phone"><a href="tel:3234543637">323-454-3637</a></div>
 </footer>
 
-<!-- STICKY CTA BAR (mobile) -->
 <div class="sticky-cta-bar">
   <a href="tel:3234543637" class="sticky-cta-call">📞 Call Now</a>
-  <a href="#estimate" class="sticky-cta-estimate">Get Free Estimate</a>
+  <a href="/#estimate" class="sticky-cta-estimate">Free Estimate</a>
 </div>
 
-<!-- COOKIE BANNER -->
 <div id="cookieBanner" style="position:fixed;bottom:0;left:0;right:0;z-index:9998;background:#111;border-top:1px solid rgba(245,168,0,0.2);padding:16px 5vw;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;transform:translateY(100%);transition:transform 0.4s ease;">
-  <p style="font-size:0.8rem;color:rgba(255,255,255,0.6);margin:0;max-width:700px;line-height:1.5;">🍪 We use cookies and Google Analytics to improve your experience and analyze site traffic. By continuing you accept our <a href="#" id="privacyLink4" style="color:var(--gold);text-decoration:none;">Privacy Policy</a>.</p>
-  <div style="display:flex;gap:10px;flex-shrink:0;">
-    <button onclick="acceptCookies()" style="background:var(--gold);color:#000;border:none;padding:9px 24px;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);">Accept</button>
-    <button onclick="declineCookies()" style="background:transparent;color:rgba(255,255,255,0.4);border:1px solid rgba(255,255,255,0.15);padding:9px 18px;font-family:'Barlow',sans-serif;font-size:0.8rem;cursor:pointer;">Decline</button>
+  <p style="font-size:0.8rem;color:rgba(255,255,255,0.6);margin:0;">We use cookies & Google Analytics. <a href="#" id="privacyLink4" style="color:var(--gold);text-decoration:none;">Privacy Policy</a>.</p>
+  <div style="display:flex;gap:10px;">
+    <button onclick="acceptCookies()" style="background:var(--gold);color:#000;border:none;padding:9px 20px;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:0.85rem;letter-spacing:0.1em;cursor:pointer;">Accept</button>
+    <button onclick="declineCookies()" style="background:transparent;color:rgba(255,255,255,0.4);border:1px solid rgba(255,255,255,0.15);padding:9px 14px;font-size:0.8rem;cursor:pointer;">Decline</button>
   </div>
-</div>
-
-<!-- PRIVACY MODAL -->
-<div id="privacyModal" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.92);overflow-y:auto;padding:40px 5vw;">
-  <div style="max-width:760px;margin:0 auto;background:#141414;border:1px solid rgba(245,168,0,0.15);padding:48px;">
-    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:32px;">
-      <div><div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.75rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Legal</div><h2 style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:#fff;line-height:1;">Privacy Policy</h2><div style="width:48px;height:3px;background:var(--gold);margin-top:12px;"></div></div>
-      <button onclick="closePrivacy()" style="background:none;border:none;color:rgba(255,255,255,0.5);font-size:1.8rem;cursor:pointer;line-height:1;padding:4px;">✕</button>
-    </div>
-    <div style="font-size:0.9rem;color:rgba(255,255,255,0.65);line-height:1.8;">
-      <p style="margin-bottom:8px;"><strong style="color:#fff;">Last updated:</strong> June 2026</p>
-      <p style="margin-bottom:24px;">1AM Handyman ("we","us","our") operates 1amhandyman.com. This page explains how we collect, use, and protect your personal information.</p>
-      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--gold);margin-bottom:10px;">1. Information We Collect</h3>
-      <p style="margin-bottom:24px;">When you submit a form we collect your name, phone number, and project description. We also collect anonymous usage data through Google Analytics. We do <strong style="color:#fff;">not</strong> collect financial information or sensitive personal data.</p>
-      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--gold);margin-bottom:10px;">2. How We Use Your Information</h3>
-      <p style="margin-bottom:24px;">We use your contact information solely to respond to your service request. We do <strong style="color:#fff;">not</strong> sell, rent, or share your personal information with third parties for marketing purposes.</p>
-      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--gold);margin-bottom:10px;">3. Cookies &amp; Google Analytics</h3>
-      <p style="margin-bottom:24px;">We use Google Analytics to understand how visitors use the site. Data collected is anonymous. You can opt out via the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" style="color:var(--gold);">Google Analytics Opt-out Add-on</a>.</p>
-      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--gold);margin-bottom:10px;">4. California Privacy Rights (CCPA)</h3>
-      <p style="margin-bottom:24px;">California residents have the right to know what data we collect, request deletion, and opt out of sale (we do not sell data). Contact us at <a href="mailto:1am.handyman.sf@gmail.com" style="color:var(--gold);">1am.handyman.sf@gmail.com</a>.</p>
-      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--gold);margin-bottom:10px;">5. Contact Us</h3>
-      <p>📧 <a href="mailto:1am.handyman.sf@gmail.com" style="color:var(--gold);">1am.handyman.sf@gmail.com</a><br>📞 <a href="tel:3234543637" style="color:var(--gold);">323-454-3637</a><br>📍 Simi Valley, California</p>
-    </div>
-    <div style="margin-top:36px;text-align:center;"><button onclick="closePrivacy()" style="background:var(--gold);color:#000;border:none;padding:12px 40px;font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:0.1em;cursor:pointer;clip-path:polygon(12px 0%,100% 0%,calc(100% - 12px) 100%,0% 100%);">Close</button></div>
-  </div>
-</div>
-
-<!-- LIGHTBOX -->
-<div id="lightbox" role="dialog" aria-modal="true">
-  <button class="lb-close" id="lbClose" title="Close">✕</button>
-  <button class="lb-arrow lb-prev" id="lbPrev">&#8249;</button>
-  <img id="lbImg" src="" alt="">
-  <button class="lb-arrow lb-next" id="lbNext">&#8250;</button>
-  <div class="lb-caption" id="lbCaption"></div>
-  <div class="lb-counter" id="lbCounter"></div>
 </div>
 
 <script src="/assets/script.js"></script>
+<script>
+  // Estimate form on calculator page
+  const formCalc = document.getElementById('estimateFormCalc');
+  const successCalc = document.getElementById('formSuccessCalc');
+  if (formCalc) {
+    formCalc.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = formCalc.querySelector('button[type=submit]');
+      btn.textContent = 'Sending...'; btn.disabled = true;
+      try {
+        const res = await fetch(formCalc.action, {
+          method: 'POST', body: new FormData(formCalc),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          formCalc.style.display = 'none';
+          successCalc.style.display = 'block';
+          if (typeof gtag !== 'undefined') gtag('event', 'conversion_event_purchase', { event_source: 'calc_estimate_form' });
+        } else {
+          alert('Please call us: 323-454-3637');
+          btn.textContent = 'Send Estimate Request →'; btn.disabled = false;
+        }
+      } catch {
+        alert('Please call: 323-454-3637');
+        btn.textContent = 'Send Estimate Request →'; btn.disabled = false;
+      }
+    });
+  }
+</script>
+<script>
+  // ── Quantity control ──────────────────────────────────────────
+  let qty = 1;
+  const MAX_QTY = 20;
+
+  function changeQty(delta) {
+    qty = Math.max(1, Math.min(MAX_QTY, qty + delta));
+    document.getElementById('qty-val').textContent = qty;
+    updateDiscountNote();
+    document.getElementById('result-box').classList.remove('visible');
+  }
+
+  function updateDiscountNote() {
+    const note = document.getElementById('discount-note');
+    if (qty === 1) { note.innerHTML = '&nbsp;'; return; }
+    const disc = Math.min((qty - 1) * 10, 40);
+    note.textContent = `Multi-unit discount up to ${disc}% on additional units`;
+  }
+
+  // ── Pricing logic ─────────────────────────────────────────────
+  function floorTo10(n) { return Math.floor(n / 10) * 10; }
+
+  function calcTotal(unitBase, qty) {
+    let total = 0;
+    for (let i = 0; i < qty; i++) {
+      const disc = Math.min(i * 0.10, 0.40);
+      total += unitBase * (1 - disc);
+    }
+    return Math.max(120, floorTo10(total));
+  }
+
+  function calculate() {
+    const sel = document.getElementById('svc-select');
+    if (!sel.value) { sel.focus(); return; }
+
+    const parts = sel.value.split('|');
+    const label = parts[0];
+    const starting = parseInt(parts[1]);
+    const typical = parseInt(parts[2]);
+
+    // Range: starting -20% to typical +20%, min $120
+    const unitLow  = Math.max(120, floorTo10(starting * 0.8));
+    const unitHigh = floorTo10(typical * 1.2);
+
+    const totalLow  = calcTotal(unitLow,  qty);
+    const totalHigh = calcTotal(unitHigh, qty);
+
+    // Typical midpoint
+    const typMid = calcTotal(floorTo10((starting + typical) / 2), qty);
+
+    document.getElementById('res-service').textContent = label + (qty > 1 ? ` × ${qty}` : '');
+    document.getElementById('res-low').textContent  = '$' + totalLow.toLocaleString();
+    document.getElementById('res-high').textContent = '$' + totalHigh.toLocaleString();
+    // typical removed per client request
+
+    const discEl = document.getElementById('res-discount');
+    if (qty > 1) {
+      const totalDisc = Math.min((qty - 1) * 10, 40);
+      discEl.textContent = `Includes multi-unit discount up to ${totalDisc}%`;
+      discEl.style.display = 'inline-block';
+    } else {
+      discEl.style.display = 'none';
+    }
+
+    document.getElementById('result-box').classList.add('visible');
+    document.getElementById('result-box').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // Reset result when service changes
+  document.getElementById('svc-select').addEventListener('change', function() {
+    document.getElementById('result-box').classList.remove('visible');
+  });
+</script>
 </body>
 </html>
